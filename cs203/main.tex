@@ -20,14 +20,6 @@
     \import{./figures/}{#2.pdf_tex}
 }
 
-\newcommand{\onefig}[2][1]{
-	\begin{figure}[H]
-		\centering
-		\incfig{#1}
-		\caption{#2}
-	\end{figure}
-}
-
 \newcommand{\halfsubfig}[2][1]{
 	\begin{subfigure}{0.45\linewidth}
 		\centering
@@ -488,7 +480,7 @@ To generate Gray code sequence, do the following\cite{gray_code_generation}:
 	      \label{gray_code_step_3}
 	\item Repeat step \ref{gray_code_step_2} and \ref{gray_code_step_3} until the desired width is achieved.
 \end{enumerate}
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\incfig{gray_code_generation}
 	\caption{Gray code generation upto 3 bits}
