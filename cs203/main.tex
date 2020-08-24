@@ -1,0 +1,512 @@
+\documentclass[oneside]{book}
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{babel}
+\usepackage{cleveref}
+
+\newcommand{\incfig}[1]{%
+    \import{./figures/}{#1.pdf_tex}
+}
+\newcommand{\incfigsc}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\newcommand{\onefig}[2][1]{
+	\begin{figure}[H]
+		\centering
+		\incfig{#1}
+		\caption{#2}
+	\end{figure}
+}
+
+\newcommand{\halfsubfig}[2][1]{
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{#1}
+		\caption{#2}
+	\end{subfigure}
+}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!80!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\title{CS203 - Digital Logic Design}
+\author{Indian Institute of Technology Ropar}
+\begin{document}
+\maketitle
+{
+	\hypersetup{
+		hidelinks
+	}
+	\tableofcontents
+}
+\renewcommand{\arraystretch}{1.5}%Sets the vertical margin
+
+\chapter[Introduction]{Introduction to CS203}
+Digital means discrete in nature(values as well as time). For example, our computer handle discrete data only, therefore are digital computers.\\
+Analog means continuous in nature(values as well as time). For example, the atmospheric variables, our senses, etc are analog.
+
+\section{Binary Classification}
+Classification into \textbf{two} groups if called \textit{binary classification}. It is easy. For example, in computers, low voltage is classified as 0 and high voltage is classified as 1.\\
+\begin{center}
+	With N bits(binary digits), we can represent \(2^N\) states.
+\end{center}
+Some rounding off-
+\begin{itemize}
+	\item 10 bits - \(2^{10}\) states \(= 1024 \approx 10^3\)
+	\item 20 bits - \(2^{20}\) states \(= 2^{10}\times 2^{10} \approx 10^6\)
+	\item 30 bits - \(2^{30}\) states \(= 2^{10}\times 2^{10}\times 2^{10} \approx 10^9\) \hfill \(\sim\) Population of India
+\end{itemize}
+
+\section{Discretization}
+The process of discretization of analog signal involves setting discrete levels in values as well as time. \Cref{discretization_plot} gives some idea.
+
+\noindent We lose some information when discretization occurs. To minimize the loss, we can use \textbf{Nyquest Criteria}. Also, simply increasing the number of levels will reduce the error.
+
+\begin{figure}[H]
+	\centering
+	\incfig{signal}
+	\caption{Discretization of analog signal}
+	\label{discretization_plot}
+\end{figure}
+
+\section{Analog vs Digial System}
+Our world is analog but our devices are digital. \Cref{analog_digital_work_flow} shows working of analog and digital systems.
+\\\\
+\noindent \textbf{ADC} - Analog-to-digital converter\\
+\noindent \textbf{DAC} - Digital-to-analog converter
+
+\begin{figure}[H]
+	\centering
+	\halfsubfig[analog_system_flowchart]{Analog System}
+	\halfsubfig[digital_system_flowchart]{Digital System}
+	\caption{Analog and digial systems}
+	\label{analog_digital_work_flow}
+\end{figure}
+
+\subsection{Advantages of Digital System}
+\begin{itemize}
+	\item \textbf{Precision}
+	      \begin{itemize}
+		      \item Small changes/error in signals does not affect the value. Even if errors occur in digital signal, it is easy to record the error and revert it.
+		      \item Digital signals will produce same output for same input most of the time.
+	      \end{itemize}
+	\item \textbf{Programmability}
+	      \begin{itemize}
+		      \item Each analog system is created for specific use case. But digital systems have generic gates which allow reprogramming.
+	      \end{itemize}
+	\item \textbf{Maintainability}
+	      \begin{itemize}
+		      \item Digital signals are robust to change and can last longer(for years).
+	      \end{itemize}
+	\item \textbf{Design automation}
+\end{itemize}
+
+\subsection{Disadvantages of Digital System}
+\begin{itemize}
+	\item \textbf{Area/Cost}
+	      \begin{itemize}
+		      \item Cost of digital system is more than analog.
+	      \end{itemize}
+	\item \textbf{Power}
+	\item \textbf{Performance}
+	      \begin{itemize}
+		      \item Digital signals are slower.
+	      \end{itemize}
+	\item \textbf{Bandwidth}
+	\item \textbf{High Frequency Operations}
+\end{itemize}
+
+\subsection{Conclusion}
+Most systems are going towards digital. But whenever we need very specific solution that required high bandwidth and frequency, analog systems are used. Radio recievers, transmitters, etc. are mostly analog.
+
+\section{Factors pushing the growth story}
+\begin{itemize}
+	\item \textbf{Moore's law}
+	      \begin{itemize}
+		      \item The number of transistors on a unit area of circuit doubles every 18 months.
+		      \item It is not a law but has been pretty accurate till now.
+	      \end{itemize}
+	\item \textbf{Technology}
+	\item \textbf{Compute Requirements}
+	\item \textbf{Design Automation}
+\end{itemize}
+
+\section{Binary Representation}
+\subsection{Traditional Number Systems}
+\begin{itemize}
+	\item Historically, different bases(10, 12, 15, 16, 20) have been used.
+	\item There were two kinds of number system
+	      \begin{itemize}
+		      \item \textbf{Positional}: Position of a number determines its value. For example, arabic, indic number systems.
+		      \item \textbf{Non-positional}: Value is largely decided by what symbol is used. For example, roman number system.
+	      \end{itemize}
+	\item Finally, position based decimal system was accepted worldwide because it makes it easy to do calculations.
+\end{itemize}
+
+\subsection{Positional Number System}
+Value of symbol depends on its position and radix/base.
+\[
+	N =
+	(a_n a_{n-1} \ldots a_0)_R =
+	\sum\limits_0^n a_i R^i
+\]
+The definition can be easily extended to fractions.
+\[
+	N =
+	(a_n a_{n-1} \ldots a_0 a_{-1}\ldots a_{-m + 1} a_{-m})_R =
+	\sum\limits_0^n a_i R^i
+\]
+Few examples
+\begin{itemize}
+	\item \(\displaystyle (101101)_2 = 1\times 2^{5} + 1\times 2^3 + 1\times 2^2 + 1\times 2^0 = 45\)
+	\item \(\displaystyle (101.101)_2 = 1\times 2^{2} + 1\times 2^0 + 1\times 2^{-1} + 1\times 2^-3 = 5.625\)
+\end{itemize}
+
+\subsubsection{Decimal to base-R conversion}
+For converting the number \(N\) in base 10 to a number in base \(R\)
+\begin{enumerate}
+	\item Divide \(N\) by \(R\), the remainder is \(a_0\) and quotient is \(Q\)
+	\item Set \(N\) as \(Q\) and repeat the above process to get subsequent digits \(a_1, a_2, \ldots\)
+	\item Stop when \(N\) becomes zero
+\end{enumerate}
+\textbf{Example}: \((24)_{10} = (11000)_2\)
+\begin{center}
+	\begin{tabular}{|cccl|}
+		\hline
+		\(R\) & \(N\) & \(Q\) &             \\
+		\hline
+		2     & 24    & 12    & \(a_0 = 0\) \\
+		2     & 12    & 6     & \(a_1 = 0\) \\
+		2     & 6     & 3     & \(a_2 = 0\) \\
+		2     & 3     & 1     & \(a_3 = 1\) \\
+		2     & 1     & 0     & \(a_4 = 1\) \\
+		2     & 0     &       &             \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\noindent For converting fractional part \(F\) to base R
+\begin{enumerate}
+	\item Multiply \(F\) with \(R\), the non-fractional part is \(a_{-1}\) and fractional part is \(F^\prime\)
+	\item Set \(F\) as \(F^\prime\) and repeat the above process to get subsequent digits \(a_{-2}, a_{-3}, \ldots\)
+	\item Stop when \(F\) becomes zero
+\end{enumerate}
+\textbf{Example}: \((0.7)_{10} = (0.10110011001100110011\cdots)_2\)
+\begin{center}
+	\begin{tabular}{|cccl|}
+		\hline
+		\(R\)      & \(F\)      & \(F^\prime\) &                \\
+		\hline
+		2          & 0.7        & 0.4          & \(a_{-1} = 1\) \\
+		2          & 0.4        & 0.8          & \(a_{-2} = 0\) \\
+		2          & 0.8        & 0.6          & \(a_{-3} = 1\) \\
+		2          & 0.6        & 0.2          & \(a_{-4} = 1\) \\
+		2          & 0.2        & 0.4          & \(a_{-5} = 0\) \\
+		2          & 0.4        & 0.8          & \(a_{-6} = 0\) \\
+		2          & 0.8        & 0.6          & \(a_{-7} = 1\) \\
+		2          & 0.6        & 0.2          & \(a_{-8} = 1\) \\
+		\(\vdots\) & \(\vdots\) & \(\vdots\)   &                \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\section{Hexadecimal Number System}
+Hexadecimal system requires 16 symbols which are \(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F\). Hex numbers are generally prefixed by \texttt{0x}.
+
+\subsubsection{Conversion from binary to hex}
+To convert a binary number to hex, group the binary number into groups of four(nibbles) from right to left. Then, convert each nibble to hex using a lookup table or simple conversion.
+\[
+	(\texttt{10011110001})_2 \longrightarrow \texttt{100\ 1111\ 0001} \longrightarrow \texttt{0x4F1}
+\]
+
+\subsubsection{Conversion from hex to binary}
+To convert a hex to binary number, convert each digit to binary and make its length 4 by adding zeros as prefix. Now concatenate these so formed nibbles.
+\[
+	\texttt{0xBAD} \longrightarrow \texttt{1011\ 1010\ 1101} \longrightarrow (\texttt{101110101101})_2
+\]
+
+\section{Negative Numbers}
+\subsection{Sign Magnitude Negative Numbers}
+We can set one bit to represent the sign. Generally, we choose the most-significant bit as the sign bit.
+\\\\
+\textbf{Example}
+\begin{align*}
+	(1001\ 0011)_2 & = (-35)_{10} \\
+	(0111\ 1111)_2 & = (127)_{10}
+\end{align*}
+
+\noindent So the range of \(N\)-bit number is \(-(2^{N-1} - 1)\) to \((2^{N-1} - 1\)).
+\\
+\noindent Also, such representation has two zeros - positive and negative.
+\\
+\subsubsection{Addition and subtraction}
+\noindent Addition and subtraction becomes difficult.
+\begin{itemize}
+	\item We have to look at the signs and then choose what operation will be performed.
+	\item Two zeros create confusion.
+	\item Either operation may result in addition or subtraction
+	\item Complex hardware implementation
+	      \begin{itemize}
+		      \item Requires both adder and subtractor
+		      \item Requires controller that determine which hardware to use
+		      \item Separate handling of sign
+	      \end{itemize}
+\end{itemize}
+
+\subsection{1's Complement}
+For obtaining \(-u\) flip all the bits of \(u\). Here also, \(N^{th}\) bit represents sign and \(N-1\) bits represent magnitude.
+\\\\ \noindent\textbf{Example}
+\begin{align*}
+	(+13)_{10} & = (0000\ 1101)_2 & (+69)_{10} & = (0010\ 0101)_2 \\
+	(-13)_{10} & = (1111\ 0010)_2 & (-69)_{10} & = (1101\ 1010)_2
+\end{align*}
+\noindent So the range of \(N\)-bit number is \(-(2^{N-1} - 1)\) to \((2^{N-1} - 1\)).
+\subsubsection{Mathematical representation}
+We know \(2^{N} - 1 = 111\ldots1\)
+\[
+	\therefore -u =\ \sim|u| = 2^N - 1 - |u|
+\]
+\subsubsection{Addtion and subtraction}
+\noindent Addition and subtraction is difficult.
+\begin{itemize}
+	\item In \textit{end-around carry} condition, the wrapped bit must be added to the right-most bit.
+	\item In \textit{end-around borrow} condition, the wrapped bit must be subtracted from the right-most bit.
+	\item There are two representation of zeros.
+\end{itemize}
+
+\subsection{Bias Representation}
+Let \(F(u)\) be the value of binary representation of \(u\). In bias represent
+\[
+	F(u) = u + bias
+\]
+\noindent\textbf{Example} (with bias = 127)
+\begin{align*}
+	(1)_{10}    & = (1000\ 0000)_2 \\
+	(-127)_{10} & = (0000\ 0000)_2 \\
+	(128)_{10}  & = (1111\ 1111)_2
+\end{align*}
+
+\subsubsection{Problems}
+\begin{itemize}
+	\item Bias should be adjusted while adding two numbers
+	      \[
+		      F(u + v) = F(u) + F(v) - bias
+	      \]
+	\item Bias should be standardized
+\end{itemize}
+
+\subsection{Summary So Far}
+\begin{itemize}
+	\item Representation should be simple
+	\item Two values of zero are not desirable
+	\item Addition and subtraction should be easy (if possible done by same method)
+\end{itemize}
+
+\subsection{2's Complement}
+When \(u >= 0\)
+\[
+	F(u) = |u|
+\]
+When \(u < 0\)
+\[
+	F(u) = 2^N - |u| =\ \sim|u| + 1
+\]
+\subsubsection{Properties}
+\begin{itemize}
+	\item Single zero
+	\item Most-significant bit represents sign(except in case of zero)
+	\item \(F(-u) = 2^N - F(u)\)
+	\item Range is from \(-2^{N-1}\) to \((2^{N-1} - 1)\)
+\end{itemize}
+
+\subsubsection{Arithmetic}
+\begin{itemize}
+	\item Addition
+	      \[
+		      F(u+v) = F(u) + F(v)
+	      \]
+	\item Subtraction
+	      \[
+		      F(u-v) = F(u) + F(-v)
+	      \]
+	\item Multiplication (assume no overflow)
+	      \[
+		      F(u\times v) = F(u)\times F(v)
+	      \]
+\end{itemize}
+\subsubsection{Overflow and Underflow}
+\begin{itemize}
+	\item If sign of both operands are same and result if of opposite sign or result is 0, overflow/underflow has occured.
+	\item If sign of both operands are different, overflow cannot occur.
+\end{itemize}
+
+\subsubsection{Converting N-bit number to M-bit number}
+To convert to \(N\)-bit number to \(M\)-bit number(\(M\geq N\)) keep adding the sign bit as prefix until the size becomes \(M\).
+\\
+Example (Converting 4-bit number to 8-bit number)
+\begin{align*}
+	(3)_{10} = (\textcolor{red}{1}101)_2 = (\textcolor{red}{1111\ 1}101)_2 \\
+	(5)_{10} = (\textcolor{red}{0}101)_2 = (\textcolor{red}{0000\ 0}101)_2
+\end{align*}
+
+\subsection{Number Circle}
+An efficient way to see different representations in action.
+\begin{itemize}
+	\item To add \(x\) to \(u\), move \(x\) steps in clockwise direction from \(u\).
+	\item To subtract \(x\) from \(u\), move \(x\) steps in counter-clockwise direction from \(u\).
+	\item Crossing dotted lines will result in underflow/overflow.
+\end{itemize}
+Visit \url{https://thesis.laszlokorte.de/demo/number-circle.html} to experiment.
+
+\section{Representing Decimal Numbers and Characters}
+\subsection{Number Encoding Problem}
+We have to find a one-to-one mapping between binary combination and corresponding decimal value. \textit{Is there any option better than positional number system?}.
+\subsection{Binary Coded Decimal (BCD) Number System}
+In BCD, each decimal digit is mapped to a nibble of its value. These nibbles are concatenated to get the binary representation.
+\\\\
+\noindent \(8421\) BCD number are numbers where the bits of nibbles have weights \(8\), \(4\), \(2\) and \(1\). It is the \textit{default} BCD representation.
+\textbf{Example}
+\[
+	(5682)_{10} \longrightarrow (0101\ 01110\ 1000\ 0010)_2
+\]
+\subsubsection{Advantages}
+\begin{itemize}
+	\item No complex procedure for conversion from decimal representation required.
+	\item BCD numbers are intuitive i.e. one can look at the binary number and grasp the value quickly.
+\end{itemize}
+Initial computer (e.g. IBM System/360) used BCD numbers.
+\subsubsection{Disadvantages}
+\begin{itemize}
+	\item During arithemtic, we have to take care that value of no nibble exceeds 9.
+\end{itemize}
+
+\subsection{Excess 3 Code}
+It is another BCD representation where value of each digit is 3 more in binary than in decimal.
+\begin{table}
+	\centering
+	\begin{tabular}{|cc|}
+		\hline
+		Decimal    & Excess 3 Code \\
+		\hline
+		0          & 0011          \\
+		1          & 0100          \\
+		2          & 0101          \\
+		3          & 0110          \\
+		\(\vdots\) & \(\vdots\)    \\
+		8          & 1011          \\
+		9          & 1100          \\
+		\hline
+	\end{tabular}
+	\caption{Excess 3 code mapping}
+\end{table}
+\subsubsection{Advantages}
+\begin{itemize}
+	\item \textbf{Self Complementing}\\
+	      9's complement can be obtained by inverting all the bits.
+	      \[
+		      9 - x =\ \sim x
+	      \]
+	      It helps in doing subtration by addition.
+\end{itemize}
+
+\subsection{Two-out-of-five Code}
+It is another BCD representation where each decimal digit is mapped to a group of 5 bits. Each digit's binary representation contains \textbf{exactly} 2 ones.
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|cc|}
+		\hline
+		Decimal & Two-out-of-five Code \\
+		\hline
+		0       & 00011                \\
+		1       & 00101                \\
+		2       & 00110                \\
+		3       & 01001                \\
+		4       & 01010                \\
+		5       & 01100                \\
+		6       & 10001                \\
+		7       & 10010                \\
+		8       & 10100                \\
+		9       & 11000                \\
+		\hline
+	\end{tabular}
+	\caption{Two-out-of-five code mapping}
+\end{table}
+\subsubsection{Advantages}
+\begin{itemize}
+	\item \textbf{Error Resilient}\\
+	      If any or several bits flip, there is a high chance that it will not contain 2 ones. In that case, we can know that the value is incorrect and we can redo the computation.
+\end{itemize}
+
+\subsection{Gray Code}
+It is another BCD representation. It is a low power code because the trasititions between adjacent numbers is minimum.
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|cc|}
+		\hline
+		Decimal & Gray Code \\
+		\hline
+		0       & 0000      \\
+		1       & 0001      \\
+		2       & 0011      \\
+		3       & 0010      \\
+		4       & 0110      \\
+		5       & 1110      \\
+		6       & 1010      \\
+		7       & 1011      \\
+		8       & 1001      \\
+		9       & 1000      \\
+		\hline
+	\end{tabular}
+	\caption{Gray code mapping}
+\end{table}
+\subsubsection{Advantages}
+\begin{itemize}
+	\item \textbf{Low Power Consumption}\\
+	      Since the transition between adjacent numbers is minimum, power consumption is minimized.
+\end{itemize}
+\subsubsection{Gray Code Sequence}
+To generate Gray code sequence, do the following\cite{gray_code_generation}:
+\begin{enumerate}
+	\item Commence with the simplest Gray code possible; that is, for a single bit.
+	\item Create a mirror image of the existing Gray code below the original values.
+	      \label{gray_code_step_2}
+	\item Prefix the original values with 0s and the mirrored values with 1s.
+	      \label{gray_code_step_3}
+	\item Repeat step \ref{gray_code_step_2} and \ref{gray_code_step_3} until the desired width is achieved.
+\end{enumerate}
+\begin{figure}
+	\centering
+	\incfig{gray_code_generation}
+	\caption{Gray code generation upto 3 bits}
+	\label{gray_code_generation}
+\end{figure}
+
+\section{Representing Characters}
+\begin{itemize}
+	\item \textbf{ASCII}\\
+	      Using 8-bit number for each commonly used character
+	\item \textbf{UTF-8}
+	      \begin{itemize}
+		      \item Compatible with ASCII
+		      \item Uses 1 to 6 bytes
+	      \end{itemize}
+	\item \textbf{UTF-16}
+\end{itemize}
+
+\bibliographystyle{unsrt}
+\bibliography{main}
+\end{document}
