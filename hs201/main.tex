@@ -1,0 +1,183 @@
+\documentclass[oneside]{book}
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{babel}
+\usepackage{cleveref}
+
+\newcommand{\incfig}[1]{%
+    \import{./figures/}{#1.pdf_tex}
+}
+\newcommand{\incfigsc}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\newcommand{\halfsubfig}[2][1]{
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{#1}
+		\caption{#2}
+	\end{subfigure}
+}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!80!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\title{HS201 - Economics}
+\author{Indian Institute of Technology Ropar}
+\begin{document}
+\maketitle
+{
+	\hypersetup{
+		hidelinks
+	}
+	\tableofcontents
+}
+\renewcommand{\arraystretch}{1.5}%Sets the vertical margin
+
+\chapter{Managerial Economics and Theory}
+Managerial economics applies microeconomics theory to business problem? For example, how to use economic analysis to make decision to achieve firm's goal to profit maximization.
+\begin{itemize}
+	\item \textbf{Microeconomics}\\
+	      Study of behaviour of individual economic agents.
+\end{itemize}
+\section{Economic Cost of Resources}
+\textbf{Opportunity cost} of using any resource is what the firm owners must give up to use the resourse.
+\\\\
+\noindent There are two kinds of resources
+\begin{enumerate}
+	\item \textbf{Market-supplied resources}\\
+	      Resources owned by other and hired/rented/leased by the firm.
+	\item \textbf{Onwer-supplied resources}\\
+	      Resources owned and used by the firm.
+\end{enumerate}
+
+\section{Economic Costs}
+Total economic cost is the sum of opportunity costs of both market-supplied resources and owner-supplied resources.
+\begin{align*}
+	Total\ economic\ cost = Explicit\ cost + Implicit\ cost
+\end{align*}
+\begin{enumerate}
+	\item \textbf{Explicit Costs}\\
+	      It is the monetary payments to owners of market-supplied resources.
+	\item \textbf{Implicit Costs}\\
+	      Non-monetary opportunity costs of using owner-supplied resources.
+	      \begin{itemize}
+		      \item \textbf{Equity Capital}\\Opportunity cost of cash provided
+		      \item Opportunity cost of using land or capital owned by the firm
+		      \item Opportunity cost of owner's time spent managing or working for the firm
+	      \end{itemize}
+\end{enumerate}
+
+\section{Profit}
+\begin{align*}
+	Economic\ profit & = Total\ revenue - Total\ economic\ cost           \\
+	                 & = Total\ revenue - Explicit\ cost - Implicit\ cost
+\end{align*}
+\begin{align*}
+	Accounting\ profit & = Total\ revenue - Explicit\ cost
+\end{align*}
+The objective is to maximize \textbf{economic cost}.
+
+\section{Demand}
+The amount of a good or service consumers are willing and able to purchase during a given period of time is called demand.
+\\\\
+The \textit{demanded quantity} is represented by \(Q_d\).
+\subsection{General Demand Function}
+The six variables that incluence the \textit{demanded quantity} ($Q_d$) are
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|lc|}
+		\hline
+		\textbf{Factor}                      & \textbf{Symbol}  \\
+		\hline
+		Price of good or service             & \(P\)            \\
+		Income of consumers                  & \(M\)            \\
+		Prices of related goods and services & \(P_R\)          \\
+		Taste patterns of consumers          & \(\mathfrak{T}\) \\
+		Expected future price of product     & \(P_e\)          \\
+		Number of consumers in market        & \(N\)            \\
+		\hline
+	\end{tabular}
+	\caption{Factors affecting demand function}
+\end{table}
+\subsubsection{General demand function}
+\[
+	Q_d = f(P, M, P_R, \mathfrak{T}, P_e ,N)
+\]
+\subsubsection{Linear demand function}
+\[
+	Q_d = a + bP + cM + dP_R + e\mathfrak{T} + fP_e + gN
+\]
+\noindent The magnitude of \(b, c, d, e, f\) and \(g\) shows the effect on \(Q_d\) on changing the respective factor.
+\\
+\noindent The sign of \(b, c, d, e, f\) and \(g\) shows the relationship of the factor with \(Q_d\)
+\begin{itemize}
+	\item Positive sign indicated direct relationship.
+	\item Negative sign indicated inverse relationship.
+\end{itemize}
+\Cref{pattern_of_slopes} shows common dependence.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|l|c|}
+		\hline
+		\textbf{Variable}        & \textbf{Relation}                            & \textbf{Sign of slope parameter} \\
+		\hline
+		\(P\)                    & Inverse                                      & Negative                         \\
+		\hline
+		\multirow{2}{*}{\(M\)}   & Direct \textcolor{gray}{for normal goods}    & Positive                         \\
+		\cline{2-3}
+		{}                       & Inverse \textcolor{gray}{for inferior goods} & Negative                         \\
+		\hline
+		\multirow{2}{*}{\(P_R\)} & Direct \textcolor{gray}{for substitutes}     & Positive                         \\
+		\cline{2-3}
+		{}                       & Inverse \textcolor{gray}{for complements}    & Negative                         \\
+		\hline
+		\(\mathfrak{T}\)         & Direct                                       & Positive                         \\
+		\hline
+		\(P_e\)                  & Direct                                       & Positive                         \\
+		\hline
+		\(N\)                    & Direct                                       & Positive                         \\
+		\hline
+	\end{tabular}
+	\caption{Commonly observed pattern of dependence}
+	\label{pattern_of_slopes}
+\end{table}
+
+\subsection{Direct Demand Function}
+Direct demand function shows how \(Q_d\) is related to product price \(P\) when all other variables are held constant.
+\[
+	Q_d = f(P)
+\]
+\subsubsection{Law of Demand}
+When all factors other than \(P\) are constant, \(\displaystyle \frac{\Delta Q_d}{\Delta P}\) must be negative. In other words, if price increases, demand will decrease.
+
+\subsection{Inverse Demand Function}
+Traditionally, price (\(P\)) is plotted on the vertical axis and quantity demanded (\(Q_d\)) is plotted on the horizontal axis.\\
+Inverse of the demand function is \textit{Inverse demand function}.
+\[
+	P = f(Q_d)
+\]
+
+\subsection{Graphing Demand Functions}
+Demand function can help us in knowing two things:
+\begin{enumerate}
+	\item Maximum quantity of goods that can be purchased at a given price.
+	\item Maximum price consumers would pay for the goods.
+\end{enumerate}
+
+\bibliographystyle{unsrt}
+\bibliography{main}
+\end{document}
