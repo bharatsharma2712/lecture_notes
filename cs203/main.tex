@@ -383,11 +383,18 @@ In BCD, each decimal digit is mapped to a nibble of its value. These nibbles are
 Initial computer (e.g. IBM System/360) used BCD numbers.
 \subsubsection{Disadvantages}
 \begin{itemize}
-	\item During arithemtic, we have to take care that value of no nibble exceeds 9.
+	\item During arithemtic, we have to take care that value of no nibble exceeds 9.\\
+	      In case, when value exceeds 9 (i.e. the value is not a valid BCD number), then add \((0110)_2\) to the result.\\
+	      \textbf{Why did we add 6?}\\
+	      \cite{bcd_addition_overflow} Because there are 6 invalid states in BCD numbers. To skip those states, we added 6.
 \end{itemize}
 
 \subsection{Excess 3 Code}
 It is another BCD representation where value of each digit is 3 more in binary than in decimal.
+\\\textbf{Note:} Be careful while adding numbers in \textit{Excess 3 code}.
+\[
+	\mathrm{Excess3Add}(u, v) = \mathrm{Excess3}(u) + \mathrm{Excess3}(v) - (0011)_2
+\]
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{|cc|}
@@ -410,9 +417,13 @@ It is another BCD representation where value of each digit is 3 more in binary t
 	\item \textbf{Self Complementing}\\
 	      9's complement can be obtained by inverting all the bits.
 	      \[
-		      9 - x =\ \sim x
+		      \mathrm{Excess3}(9 - x) =\ \sim \mathrm{Excess3}(x)
 	      \]
-	      It helps in doing subtration by addition.
+	      It helps in doing subtration by addition.\\
+	      Consider the addition of two digits $d_1$ and $d_2$ (digits are represented in excess 3 code).
+	      \[
+		      \mathrm{Excess3Subtraction}(d_2, d_1) =\ \sim\mathrm{Excess3Add}(\sim d_2, d_1)
+	      \]
 \end{itemize}
 
 \subsection{Two-out-of-five Code}
