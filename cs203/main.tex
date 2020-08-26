@@ -510,6 +510,95 @@ To generate Gray code sequence, do the following\cite{gray_code_generation}:
 	\item \textbf{UTF-16}
 \end{itemize}
 
+\section{Real Numbers}
+How would we represent a decimal point in binary?
+\subsection{Fixed Point Numbers}
+In this kind of numbers, we would fix some bits for only the fractional part.
+\\\\
+\noindent\textbf{Example} (Assuming 4 decimal digits can be represented and decimal point is after 2 digits)
+\begin{align*}
+	2300 & \ \mathrm{would\ represent}\ 23.00 \\
+	123  & \ \mathrm{would\ represent}\ 1.23  \\
+	1    & \ \mathrm{would\ represent}\ 0.01  \\
+	100  & \ \mathrm{would\ represent}\ 1.00
+\end{align*}
+
+\subsection{Floating Point Numbers}
+To represent very large and very small number, we use scientific notation.
+\begin{align*}
+	\mathrm{In\ decimal:}\  & 129 = 1.29 \times 10^2        \\
+	\mathrm{In\ binary:}\   & 1000001 = 1.000001 \times 2^6
+\end{align*}
+Such numbers have 3 parts:
+\begin{enumerate}
+	\item \textbf{Significand}($s$): The digit and sign before point\\
+	      Can only be $+1$ or $-1$
+	\item \textbf{Mantissa}($m$): The fractional part of number\\
+	      Can only be positive
+	\item \textbf{Exponent}($e$): The power of $2$\\
+	      Can be positive or negative
+\end{enumerate}
+
+\subsubsection{Typical representation}
+\begin{itemize}
+	\item 1 bit is reserved for significand
+	\item Next few bits for exponent
+	\item Remaining bits for mantissa
+\end{itemize}
+
+\subsubsection{IEEE 754 floating point}
+32-bit number (single precision)
+\begin{itemize}
+	\item 1 bit is reserved for significand ($s$)
+	\item 8 bits for exponent ($e$)
+	      \begin{itemize}
+		      \item Bias representation (with $bias=127$)\\
+		            Bias method is sufficient because only addition is need in exponent
+		      \item 0 and 255 are reserved for special purpose
+	      \end{itemize}
+	\item 23 bits for mantissa ($m$)
+	\item \(N = (-1)^s \times (1.m)\times 2^e\)
+\end{itemize}
+\textbf{Example}\\
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|ll|}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Converting 24.25 to IEEE 754 floating point number}}                  \\
+		\hline
+		Decimal number        & $24.25 = 16 + 8 + 0.25$                                                    \\
+		Binary number         & 11000.01                                                                   \\
+		Scientific form       & $1.100001\times 2^4$                                                       \\
+		\hline
+		Significand           & 0                                                                          \\
+		Mantissa              & 100 0010 0000 0000 0000 0000                                               \\
+		Exponent              & $(127 + 4)_{10} = (1000\ 0011)_2$                                          \\
+		\hline
+		Floating Point Number & \textcolor{red}{0}\textcolor{blue}{100 0001 1}100 0010 0000 0000 0000 0000 \\
+		In Hex                & 0x41920000                                                                 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|ll|}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Converting -0.625 to IEEE 754 floating point number}}                 \\
+		\hline
+		Decimal number        & $-0.625 = -1\times(0.5 + 0.125)$                                           \\
+		Binary number         & -0.101                                                                     \\
+		Scientific form       & $-1.01\times 2^{-1}$                                                       \\
+		\hline
+		Significand           & 1                                                                          \\
+		Mantissa              & 010 0000 0000 0000 0000 0000                                               \\
+		Exponent              & $(127 + 0)_{10} = (1111\ 1111)_2$                                          \\
+		\hline
+		Floating Point Number & \textcolor{red}{0}\textcolor{blue}{111 1111 1}010 0000 0000 0000 0000 0000 \\
+		In Hex                & 0x7FA00000                                                                 \\
+		\hline
+	\end{tabular}
+\end{table}
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
