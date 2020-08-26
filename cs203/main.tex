@@ -136,19 +136,16 @@ Most systems are going towards digital. But whenever we need very specific solut
 	\item \textbf{Design Automation}
 \end{itemize}
 
-\section{Binary Representation}
-\subsection{Traditional Number Systems}
+\chapter{Binary Representation}
+Historically, different bases(10, 12, 15, 16, 20) have been used.
+There were two kinds of number system
 \begin{itemize}
-	\item Historically, different bases(10, 12, 15, 16, 20) have been used.
-	\item There were two kinds of number system
-	      \begin{itemize}
-		      \item \textbf{Positional}: Position of a number determines its value. For example, arabic, indic number systems.
-		      \item \textbf{Non-positional}: Value is largely decided by what symbol is used. For example, roman number system.
-	      \end{itemize}
-	\item Finally, position based decimal system was accepted worldwide because it makes it easy to do calculations.
+	\item \textbf{Positional}: Position of a number determines its value. For example, arabic, indic number systems.
+	\item \textbf{Non-positional}: Value is largely decided by what symbol is used. For example, roman number system.
 \end{itemize}
+Finally, position based decimal system was accepted worldwide because it makes it easy to do calculations.
 
-\subsection{Positional Number System}
+\section{Positional Number System}
 Value of symbol depends on its position and radix/base.
 \[
 	N =
@@ -301,13 +298,6 @@ Let \(F(u)\) be the value of binary representation of \(u\). In bias represent
 	\item Bias should be standardized
 \end{itemize}
 
-\subsection{Summary So Far}
-\begin{itemize}
-	\item Representation should be simple
-	\item Two values of zero are not desirable
-	\item Addition and subtraction should be easy (if possible done by same method)
-\end{itemize}
-
 \subsection{2's Complement}
 When \(u >= 0\)
 \[
@@ -365,7 +355,6 @@ An efficient way to see different representations in action.
 Visit \url{https://thesis.laszlokorte.de/demo/number-circle.html} to experiment.
 
 \section{Representing Decimal Numbers and Characters}
-\subsection{Number Encoding Problem}
 We have to find a one-to-one mapping between binary combination and corresponding decimal value. \textit{Is there any option better than positional number system?}.
 \subsection{Binary Coded Decimal (BCD) Number System}
 In BCD, each decimal digit is mapped to a nibble of its value. These nibbles are concatenated to get the binary representation.
