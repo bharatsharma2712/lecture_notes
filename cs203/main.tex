@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage[utf8]{inputenc}
 \usepackage{babel}
 \usepackage{cleveref}
 
@@ -416,7 +417,7 @@ It is another BCD representation where value of each digit is 3 more in binary t
 \end{itemize}
 
 \subsection{Two-out-of-five Code}
-It is another BCD representation where each decimal digit is mapped to a group of 5 bits. Each digit's binary representation contains \textbf{exactly} 2 ones.
+It is another BCD representation where each decimal digit is mapped to a group of 5 bits. Each digit's binary representation contains \textbf{exactly} two 1s.
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{|cc|}
@@ -535,7 +536,7 @@ Such numbers have 3 parts:
 	\item Remaining bits for mantissa
 \end{itemize}
 
-\subsubsection{IEEE 754 floating point}
+\subsection{IEEE 754 Single Precision Floating Point Numbers}
 32-bit number (single precision)
 \begin{itemize}
 	\item 1 bit is reserved for significand ($s$)
@@ -543,12 +544,13 @@ Such numbers have 3 parts:
 	      \begin{itemize}
 		      \item Bias representation (with $bias=127$)\\
 		            Bias method is sufficient because only addition is need in exponent
-		      \item 0 and 255 are reserved for special purpose
+		      \item $(0000 0000)_2$ and $(1111 1111)_2$ are reserved for special purpose
 	      \end{itemize}
 	\item 23 bits for mantissa ($m$)
 	\item \(N = (-1)^s \times (1.m)\times 2^e\)
 \end{itemize}
-\cite{ieee_745_floating_point_number} Visit \url{https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/} for more information.
+\cite{ieee_745_floating_point_number} Visit \url{https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/} for more information.\\
+\cite{ieee_745_floating_point_number_converter} \url{https://www.h-schmidt.net/FloatConverter/IEEE754.html} is an online converter.
 \\\\\noindent\textbf{Example}\\
 \begin{table}[ht]
 	\centering
@@ -589,6 +591,93 @@ Such numbers have 3 parts:
 		\hline
 	\end{tabular}
 \end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|ll|}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Converting 0xC2630000 to decimal}}                                    \\
+		\hline
+		In Hex                & 0xC2630000                                                                 \\
+		Floating Point Number & \textcolor{red}{1}\textcolor{blue}{100 0010 0}110 0011 0000 0000 0000 0000 \\
+		\hline
+		Significand           & 1                                                                          \\
+		Exponent              & $(100\ 0010\ 0)_2 = (127 + 5)_{10}$                                        \\
+		Mantissa              & 110 0011 0000 0000 0000 0000                                               \\
+		\hline
+		Scientific form       & $1.1100011\times 2^{5}$                                                    \\
+		Binary number         & 111000.11                                                                  \\
+		Decimal number        & $56.75$                                                                    \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Denormal/subnormal Numbers}
+\label{denormal_number_section}
+In a normal floating-point value, there are no leading zeros in the significand; rather, leading zeros are removed by adjusting the exponent (for example, the number 0.0123 would be written as \(1.23 \times 10^{-2}\)). Denormal numbers are numbers where this representation would result in an exponent that is below the smallest representable exponent (the exponent usually having a limited range). Such numbers are represented using leading zeros in the significand. \cite{ieee_745_denormal}
+
+\subsection{Special Values}
+IEEE reserves exponent field values of all 0s and all 1s to denote special values in the floating-point scheme. \cite{ieee_745_special_values}
+\subsubsection{Denormalized}
+If the exponent is all 0s, then the value is a \textit{denormalized number} (\cref{denormal_number_section}), which now has an assumed leading 0 before the binary point. Thus,
+\[
+	N = (-1)^s \times 0.m \times 2^{-126}
+\]
+As denormalized numbers get smaller, they lose precision as left bits of the mantissa become zeros.
+
+\subsubsection{Zero}
+Zero is a denormalized number, with all bits in exponent and mantissa set to 0. If significand is 1, it represents -0, else +0. Also,
+\[
+	+0 = -0
+\]
+
+\subsubsection{Infinity}
+When exponent is all 1s and mantissa is all 0s, it represents \textit{infinity}. If significand is 1, it represents \(-\infty\), else \(+\infty\).
+
+\subsubsection{Not a Number(NaN)}
+The value \textit{NaN} is used to represent a value that does not represent a real number. Nan's are represented by a bit pattern with exponent of all 1s and a non-zero mantissa. There are two types on NaN's
+\begin{enumerate}
+	\item \textit{Quiet NaN (QNan)}\\
+	      A QNaN is a NaN with the most-significant mantissa bit set to 1. It represents \textit{indeterminate operations}.
+	\item \textit{Signalling NaN (SNan)}\\
+	      A SNaN is a NaN with the most-significant mantissa bit set to 0. It represents \textit{invalid operations}.
+
+\end{enumerate}
+
+\subsection{IEEE 754 Half Precision Floating Point Numbers}
+16-bit number (half precision)
+\begin{itemize}
+	\item 1 bit is reserved for significand ($s$)
+	\item 5 bits for exponent ($e$)
+	      \begin{itemize}
+		      \item Bias representation (with $bias=15$)\\
+		      \item $(0 0000)_2$ and $(1 1111)_2$ are reserved for special purpose
+	      \end{itemize}
+	\item 10 bits for mantissa ($m$)
+\end{itemize}
+\subsection{IEEE 754 Double Precision Floating Point Numbers}
+64-bit number (double precision)
+\begin{itemize}
+	\item 1 bit is reserved for significand ($s$)
+	\item 11 bits for exponent ($e$)
+	      \begin{itemize}
+		      \item Bias representation (with $bias=1023$)\\
+		      \item $(000 0000 0000)_2$ and $(111 1111 1111)_2$ are reserved for special purpose
+	      \end{itemize}
+	\item 52 bits for mantissa ($m$)
+\end{itemize}
+
+\subsection{Issues with Floating Point Numbers}
+\begin{itemize}
+	\item \textbf{Quantization Issues}
+	      \begin{itemize}
+		      \item Different rounding can lead to different results
+		      \item Different formats have different precision
+		      \item Accumulation of errors
+		      \item Non-terminating numbers cannot be represented
+	      \end{itemize}
+	\item \textbf{Hardware/Computational Costs}
+\end{itemize}
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
