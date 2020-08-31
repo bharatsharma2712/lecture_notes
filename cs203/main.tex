@@ -650,7 +650,7 @@ The value \textit{NaN} is used to represent a value that does not represent a re
 	\item 1 bit is reserved for significand ($s$)
 	\item 5 bits for exponent ($e$)
 	      \begin{itemize}
-		      \item Bias representation (with $bias=15$)\\
+		      \item Bias representation (with $bias=15$)
 		      \item $(0 0000)_2$ and $(1 1111)_2$ are reserved for special purpose
 	      \end{itemize}
 	\item 10 bits for mantissa ($m$)
@@ -661,7 +661,7 @@ The value \textit{NaN} is used to represent a value that does not represent a re
 	\item 1 bit is reserved for significand ($s$)
 	\item 11 bits for exponent ($e$)
 	      \begin{itemize}
-		      \item Bias representation (with $bias=1023$)\\
+		      \item Bias representation (with $bias=1023$)
 		      \item $(000 0000 0000)_2$ and $(111 1111 1111)_2$ are reserved for special purpose
 	      \end{itemize}
 	\item 52 bits for mantissa ($m$)
@@ -678,6 +678,147 @@ The value \textit{NaN} is used to represent a value that does not represent a re
 	      \end{itemize}
 	\item \textbf{Hardware/Computational Costs}
 \end{itemize}
+
+\chapter{Boolean Algebra}
+Boolean algebra is algebra on boolean values - \textit{true} and \textit{false}.
+These boolean values can be represented by bits - 0 for \textit{false} and 1 for \textit{true}.
+
+
+\noindent A \textit{boolean function} is a function that takes boolean inputs, performs only boolean operations and returns a boolean output.
+A \textit{truth table} is a table listing outcomes of a function for every combination of input variables.
+\section{Basic Operations}
+There are three basic operations in boolean algebra.
+\begin{enumerate}
+	\item \textbf{AND}\\
+	      \(A\) {AND} \(B\) is \textit{true} iff both \(A\) and \(B\) are \textit{true}.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $A\cdot B$ \\
+			      \hline
+			      0   & 0   & 0          \\
+			      0   & 1   & 0          \\
+			      1   & 0   & 0          \\
+			      1   & 1   & 1          \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for AND}
+		      \label{truth_table_for_and}
+	      \end{table}
+	\item \textbf{OR}\\
+	      \(A\) {OR} \(B\) is \textit{true} iff at least one of \(A\) and \(B\) is \textit{true}.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $A\cdot B$ \\
+			      \hline
+			      0   & 0   & 0          \\
+			      0   & 1   & 1          \\
+			      1   & 0   & 1          \\
+			      1   & 1   & 1          \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for OR}
+		      \label{truth_table_for_or}
+	      \end{table}
+	\item \textbf{OR}\\
+	      NOT \(A\) is \textit{true} iff \(A\) is \textit{false}.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|c|c|}
+			      \hline
+			      $A$ & $A^\prime$ \\
+			      \hline
+			      0   & 1          \\
+			      1   & 0          \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for NOT}
+		      \label{truth_table_for_not}
+	      \end{table}
+\end{enumerate}
+
+\section{Basic Theorems}
+\begin{itemize}
+	\item \textbf{Operation with 0}\\
+	      \begin{align*}
+		      X + 0    & = X \\
+		      X\cdot 0 & = 0
+	      \end{align*}
+	\item \textbf{Operation with 1}\\
+	      \begin{align*}
+		      X + 1    & = 1 \\
+		      X\cdot 1 & = X
+	      \end{align*}
+	\item \textbf{Idempotent Law}\\
+	      \begin{align*}
+		      X + X    & = X \\
+		      X\cdot X & = X
+	      \end{align*}
+	\item \textbf{Involution Law}\\
+	      \begin{align*}
+		      (X^\prime)^\prime & = X
+	      \end{align*}
+	\item \textbf{Law of Complementarily}\\
+	      \begin{align*}
+		      X + X^\prime    & = 1 \\
+		      X\cdot X^\prime & = 0
+	      \end{align*}
+	\item \textbf{Commutative Law}\\
+	      \begin{align*}
+		      X + Y    & = Y + X     \\
+		      X\cdot Y & = Y \cdot X \\
+	      \end{align*}
+	\item \textbf{Associative Law}\\
+	      \begin{align*}
+		      (X + Y) + Z        = X + (Y + Z)          = X + Y + Z \\
+		      (X\cdot Y)\cdot Z  = X \cdot (Y \cdot Z)  = X\cdot Y\cdot Z
+	      \end{align*}
+	\item \textbf{Distributive Law}\\
+	      \begin{align*}
+		      X \cdot( Y + Z) & = X\cdot Y + X\cdot Z   \\
+		      X+(Y\cdot Z)    & = (X + Y) \cdot (X + Z) \\
+	      \end{align*}
+	\item \textbf{DeMorgans's Law}\\
+	      \begin{align*}
+		      ( X + Y)^\prime     & = X^\prime\cdot Y^\prime \\
+		      ( X \cdot Y)^\prime & = X^\prime + Y^\prime    \\
+	      \end{align*}
+\end{itemize}
+
+\section{Duality Principle}
+0 is identity for OR. 1 is identity for AND.
+\begin{center}
+	Laws of boolean algebra remain same if operators and identity elements are interchanged.
+\end{center}
+In simple words, if in a boolean equation, all 0s and 1s are exchanged and all OR operators and all AND operators are exchanged with each other, the boolean equation continues to hold its validity.
+
+\section{Simplification Theorems}
+\begin{enumerate}
+	\item \textbf{Uniting}\\
+	      \begin{align*}
+		      X\cdot Y + X\cdot Y^\prime  & = X \\
+		      (X + Y)\cdot (X + Y^\prime) & = X
+	      \end{align*}
+	\item \textbf{Absorption}\\
+	      \begin{align*}
+		      X+ X\cdot Y    & = X \\
+		      X\cdot (X + Y) & = X
+	      \end{align*}
+	\item \textbf{Elimination}\\
+	      \begin{align*}
+		      X+ (X^\prime\cdot Y)  & = X + Y    \\
+		      X\cdot (X^\prime + Y) & = X\cdot Y
+	      \end{align*}
+	\item \textbf{Consensus}\\
+	      \begin{align*}
+		      X\cdot Y+ X^\prime\cdot Z + Y\cdot Z     & = X\cdot Y + X^\prime \cdot Z  \\
+		      (X + Y)\cdot (X^\prime + Z)\cdot (Y + Z) & =( X + Y )\cdot (X^\prime + Z)
+	      \end{align*}
+\end{enumerate}
+
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
