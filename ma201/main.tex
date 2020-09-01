@@ -1,0 +1,170 @@
+\documentclass[oneside]{book}
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{babel}
+\usepackage{cleveref}
+
+\newcommand{\incfig}[1]{%
+    \import{./figures/}{#1.pdf_tex}
+}
+\newcommand{\incfigsc}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\newcommand{\halfsubfig}[2][1]{
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{#1}
+		\caption{#2}
+	\end{subfigure}
+}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!80!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\newtheorem{theorem}{Theorem}[chapter]
+
+\title{MA201 - Differential Equations}
+\author{Indian Institute of Technology Ropar}
+\begin{document}
+\maketitle
+{
+	\hypersetup{
+		hidelinks
+	}
+	\tableofcontents
+}
+\renewcommand{\arraystretch}{1.5}%Sets the vertical margin
+
+\chapter{Linear Differential Equations}
+A general \(n^th\) order differential equation can be written as
+\[
+	F(x, y, \frac{dy}{dx}, \cdots, \frac{d^ny}{dx^n}) = 0
+\]
+An $n^{th}$ order ODE is \textit{linear}, if it can be written in the form
+\[
+	a_0(x)\frac{d^ny}{dx^n} + a_1(x)\frac{d^{n-1}y}{dx^{n-1}} + \cdots + a_n(x) y = g(x)
+\]
+where the functions \(a_i(x)\) are called the coefficient functions.
+\\\\
+\noindent A \textit{non-linear} ODE is an ODE which is NOT linear.
+
+\section{Solution of an ODE}
+A solution of the $n^{th}$ order ODE
+\[
+	F(x, y, \frac{dy}{dx}, \cdots, \frac{d^ny}{dx^n}) = 0
+\]
+on an interval \(I\subseteq \mathbb{R}\) is a function \(y = \phi(x)\) which is defined on $I$, which is at least $n$ times differentiable on $I$, and which satisfies the equation.
+
+\section{First Order Ordinary Differential Equations}
+Consider the first-order ODE of the form
+\begin{equation}
+	\frac{dy}{dx} = f(x, y)
+	\label{first_order_general_form_1}
+\end{equation}
+The \cref{first_order_general_form_1} can always be written as
+\begin{equation}
+	M(x, y)dx + N(x, y)dy = 0
+	\label{first_order_general_form_2}
+\end{equation}
+\subsection{Solving First Order ODEs}
+We assume that the ODE of the form \cref{first_order_general_form_1} or \cref{first_order_general_form_2} has a solution.
+\begin{enumerate}
+	\item \textbf{Separable Equations}\\
+	      If the \cref{first_order_general_form_1} or \cref{first_order_general_form_2} can be written in the form
+	      \[
+		      \frac{dy}{dx} = g(x)\cdot h(y)
+	      \]
+	      or
+	      \[
+		      f_1(x)\phi_1(y)dx + f_2(x)\phi_2(y)dy = 0
+	      \]
+	      then the DE is called a separable equation and can be solved by separating variables and integrating.
+	\item \textbf{Homogeneous Equations}\\
+	      If the \cref{first_order_general_form_2} can be written in the form
+	      \[
+		      \frac{dy}{dx} = f(\frac{x}{y})
+	      \]
+	      then the DE is called a homogeneous equation and can be solved by substituting \(y = vx\) and \(\displaystyle \frac{dy}{dx} = v + x\frac{dv}{dx}\). After substitution, the equation changes to separable equation.
+	\item \textbf{Exact Equations}\\
+	      If the \cref{first_order_general_form_2} can be written in the form
+	      \[
+		      dF(x, y) = 0
+	      \]
+	      without multiplying by any factor,
+	      then the DE is called a homogeneous equation and its general solution solution is
+	      \[
+		      F(x, y) = c
+	      \]
+	      where $c$ is an arbitrary constant.
+\end{enumerate}
+\textbf{Note:} Total differential $:= dF$ and it is defined by the formula
+\[
+	dF(x, y) = \frac{\partial F(x, y)}{\partial x}dx + \frac{\partial F(x, y)}{\partial y}dy
+\]
+\subsection{Exact Differential Equations}
+How to check if a DE of form \cref{first_order_general_form_2} is exact or not.
+\begin{theorem}
+	Consider the differential equation
+	\begin{equation}
+		M(x, y)dx + N(x, y)dy = 0
+		\label{exact_de_start_equation}
+	\end{equation}
+	where $M(x, y)$ and $N(x, y)$ have continuous first partial derivatives at all points $(x, y)$ in rectangular domain $D$. Then, the differential equation \ref{exact_de_start_equation} is exact \textbf{iff}
+	\[
+		\frac{\partial M}{\partial y}(x, y) = \frac{\partial N}{\partial x}(x, y)
+	\]
+\end{theorem}
+
+\subsection{Integrating Factors}
+Sometimes an equation \textbf{not exact} but can be \textbf{made exact} by multiplying it by some function of $x$ and $y$. The function which when multiplied, makes the equation exact is called \textit{integrating factor}.
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}:}}
+\begin{enumerate}
+	\item If
+	      \(
+	      \displaystyle\frac{1}{N}\left[\frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\right]
+	      \)
+	      be a function of $x$ only
+	      \[
+		      \frac{1}{N}\left[\frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\right] = g(x)
+	      \]
+	      then \(\displaystyle e^{\int g(x) dx}\) is an IF of the equation.
+	\item If
+	      \(
+	      \displaystyle\frac{1}{M}\left[\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right]
+	      \)
+	      be a function of $y$ only
+	      \[
+		      \frac{1}{M}\left[\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right] = h(y)
+	      \]
+	      then \(\displaystyle e^{\int h(y) dy}\) is an IF of the equation.
+	\item If
+	      \(
+	      \displaystyle Mx + Ny \neq 0
+	      \)
+	      and the equation is homogeneous,
+	      then \(\displaystyle \frac{1}{Mx + Ny}\) is an IF of the equation.
+	\item If
+	      \(
+	      \displaystyle Mx - Ny \neq 0
+	      \)
+	      and the equation can be written as
+	      \[
+		      \left\{f_1(xy)\right\}ydx + \left\{f_2(xy)\right\}xdy = 0
+	      \]
+	      then \(\displaystyle \frac{1}{Mx - Ny}\) is an IF of the equation.
+\end{enumerate}
+\bibliographystyle{unsrt}
+\bibliography{main}
+\end{document}
