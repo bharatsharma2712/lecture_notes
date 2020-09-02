@@ -162,7 +162,7 @@ The definition can be easily extended to fractions.
 Few examples
 \begin{itemize}
 	\item \(\displaystyle (101101)_2 = 1\times 2^{5} + 1\times 2^3 + 1\times 2^2 + 1\times 2^0 = 45\)
-	\item \(\displaystyle (101.101)_2 = 1\times 2^{2} + 1\times 2^0 + 1\times 2^{-1} + 1\times 2^-3 = 5.625\)
+	\item \(\displaystyle (101.101)_2 = 1\times 2^{2} + 1\times 2^0 + 1\times 2^{-1} + 1\times 2^{-3} = 5.625\)
 \end{itemize}
 
 \subsubsection{Decimal to base-R conversion}
@@ -690,7 +690,7 @@ A \textit{truth table} is a table listing outcomes of a function for every combi
 There are three basic operations in boolean algebra.
 \begin{enumerate}
 	\item \textbf{AND}\\
-	      \(A\) {AND} \(B\) is \textit{true} iff both \(A\) and \(B\) are \textit{true}.
+	      \(A\) {AND} \(B\) is \textit{true} iff both \(A\) and \(B\) are \textit{true}. This is also called \textbf{product} in boolean algebra.
 	      \begin{table}[ht]
 		      \centering
 		      \begin{tabular}{|cc|c|}
@@ -707,7 +707,7 @@ There are three basic operations in boolean algebra.
 		      \label{truth_table_for_and}
 	      \end{table}
 	\item \textbf{OR}\\
-	      \(A\) {OR} \(B\) is \textit{true} iff at least one of \(A\) and \(B\) is \textit{true}.
+	      \(A\) {OR} \(B\) is \textit{true} iff at least one of \(A\) and \(B\) is \textit{true}. This is also called \textbf{sum} in boolean algebra.
 	      \begin{table}[ht]
 		      \centering
 		      \begin{tabular}{|cc|c|}
@@ -817,6 +817,23 @@ In simple words, if in a boolean equation, all 0s and 1s are exchanged and all O
 		      X\cdot Y+ X^\prime\cdot Z + Y\cdot Z     & = X\cdot Y + X^\prime \cdot Z  \\
 		      (X + Y)\cdot (X^\prime + Z)\cdot (Y + Z) & =( X + Y )\cdot (X^\prime + Z)
 	      \end{align*}
+\end{enumerate}
+
+\section{Standard Boolean Expressions}
+$A, A^\prime, B, $ etc. are called \textit{literals} and $AB, BC^\prime A, $ etc. are called \textit{terms}.
+\begin{enumerate}
+	\item \textbf{Sum of products}\\
+	      \textsc{Examples}:
+	      \begin{itemize}
+		      \item $AB^\prime + BCD + A^\prime C$
+		      \item $A^\prime + B^\prime + C^\prime + DE$
+	      \end{itemize}
+	\item \textbf{Products of sum}\\
+	      \textsc{Examples}:
+	      \begin{itemize}
+		      \item $(A + B^\prime)(B + C + D)(A^\prime + C)$
+		      \item $A^\prime B C^\prime (D + E)$
+	      \end{itemize}
 \end{enumerate}
 
 \bibliographystyle{unsrt}
