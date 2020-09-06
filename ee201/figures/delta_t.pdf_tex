@@ -55,7 +55,7 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{delta_t.pdf}}%
     \put(0.95190376,0.04767197){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t$\end{tabular}}}}%
-    \put(0.51972402,0.36961207){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\delta[n]$\end{tabular}}}}%
+    \put(0.51972402,0.36961207){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\delta(n)$\end{tabular}}}}%
     \put(0.51938452,0.00298568){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0.63049329,0.00298568){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\Delta$\end{tabular}}}}%
     \put(0.49753677,0.24866583){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$\displaystyle\frac{1}{\Delta}$\end{tabular}}}}%

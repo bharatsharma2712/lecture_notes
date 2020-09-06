@@ -41,37 +41,37 @@
 \begin{document}
 \maketitle
 {
-  \hypersetup{
-    hidelinks
-  }
-  \tableofcontents
+	\hypersetup{
+		hidelinks
+	}
+	\tableofcontents
 }
 \renewcommand{\arraystretch}{1.5}%Sets the vertical margin
 
 \chapter{Analysis of Signals and Systems}
 \section{Energy and Power}
 \begin{table}[ht]
-  \centering
-  \begin{tabular}{|r|cc|}
-    \hline
-                    & \textbf{Continuous Time Signal}, $x(t)$                   & \textbf{Discrete Time Signal}, $x[n]$                       \\
-    \hline
-    \textbf{Energy} & \(\displaystyle E_x = \int\limits_{t_1}^{t_2}|x(t)|^2dt\) & \(\displaystyle E_x = \sum\limits_{n = N_1}^{N_2}|x[n]|^2\) \\
-    \textbf{Power}  & \(\displaystyle E_x = \frac{E_x}{t_2 - t_1}\)             & \(\displaystyle P_x = \frac{E_x}{N_2 - N_1 + 1}\)           \\
-    \hline
-  \end{tabular}
+	\centering
+	\begin{tabular}{|r|cc|}
+		\hline
+		                & \textbf{Continuous Time Signal}, $x(t)$                   & \textbf{Discrete Time Signal}, $x[n]$                       \\
+		\hline
+		\textbf{Energy} & \(\displaystyle E_x = \int\limits_{t_1}^{t_2}|x(t)|^2dt\) & \(\displaystyle E_x = \sum\limits_{n = N_1}^{N_2}|x[n]|^2\) \\
+		\textbf{Power}  & \(\displaystyle E_x = \frac{E_x}{t_2 - t_1}\)             & \(\displaystyle P_x = \frac{E_x}{N_2 - N_1 + 1}\)           \\
+		\hline
+	\end{tabular}
 \end{table}
 In infinite duration signals (\(-\infty<t<+\infty, -\infty<n<+\infty\))
 \begin{table}[ht]
-  \centering
-  \begin{tabular}{|r|cc|}
-    \hline
-                    & \textbf{Continuous Time Signal}, $x(t)$                                              & \textbf{Discrete Time Signal}, $x[n]$                                                  \\
-    \hline
-    \textbf{Energy} & \(\displaystyle E_\infty = \lim_{T\rightarrow\infty}\int\limits_{-T}^{T}|x(t)|^2dt\) & \(\displaystyle E_\infty = \lim_{N\rightarrow\infty}\sum\limits_{n = -N}^{N}|x[n]|^2\) \\
-    \textbf{Power}  & \(\displaystyle E_\infty = \lim_{T\rightarrow\infty}\frac{E_\infty}{2T}\)            & \(\displaystyle P_\infty = \lim_{N\rightarrow\infty}\frac{E_\infty}{2N + 1}\)          \\
-    \hline
-  \end{tabular}
+	\centering
+	\begin{tabular}{|r|cc|}
+		\hline
+		                & \textbf{Continuous Time Signal}, $x(t)$                                              & \textbf{Discrete Time Signal}, $x[n]$                                                  \\
+		\hline
+		\textbf{Energy} & \(\displaystyle E_\infty = \lim_{T\rightarrow\infty}\int\limits_{-T}^{T}|x(t)|^2dt\) & \(\displaystyle E_\infty = \lim_{N\rightarrow\infty}\sum\limits_{n = -N}^{N}|x[n]|^2\) \\
+		\textbf{Power}  & \(\displaystyle E_\infty = \lim_{T\rightarrow\infty}\frac{E_\infty}{2T}\)            & \(\displaystyle P_\infty = \lim_{N\rightarrow\infty}\frac{E_\infty}{2N + 1}\)          \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \section{Periodic Signals}
@@ -93,169 +93,169 @@ then the signal is periodic. The minimum value of $N$ that satisfies the conditi
 \subsection{Continuous Time Exponential Signals}
 A continuous time exponential signal can be represented as
 \begin{equation}
-  x(t) = Ce^{at}
+	x(t) = Ce^{at}
 \end{equation}
 where \(C, a \in \mathbb{C}\).
 \\\\
 \noindent \cite{continuous_time_exponential_general_case}Consider the general case where \(C = |C|e^{j\theta}\) and \(a = \sigma + \mathsf{j}\omega\). The signal becomes
 \[
-  x(t) = |C|e^{\sigma t}e^{\mathsf{j}(wt + \theta)}
+	x(t) = |C|e^{\sigma t}e^{\mathsf{j}(wt + \theta)}
 \]
 \begin{itemize}
-  \item $\omega$ is angular frequency. If \(\omega \neq 0\), the signal is sinusoidal, with \(f = \frac{\omega}{2\pi}\).
-  \item $\sigma$ is the attenuation factor. If \(\sigma \neq 0\), the signal decays/grows and is bounded by the envelope \(|C|e^{\sigma t}\).
-  \item $\theta$ is the initial phase.
+	\item $\omega$ is angular frequency. If \(\omega \neq 0\), the signal is sinusoidal, with \(f = \frac{\omega}{2\pi}\).
+	\item $\sigma$ is the attenuation factor. If \(\sigma \neq 0\), the signal decays/grows and is bounded by the envelope \(|C|e^{\sigma t}\).
+	\item $\theta$ is the initial phase.
 \end{itemize}
 
 \subsection{Discrete Time Exponential Signals}
 A discrete time exponential signal can be represented as
 \begin{equation}
-  x[n] = Ce^{an}
+	x[n] = Ce^{an}
 \end{equation}
 where \(C, a \in \mathbb{C}\).
 \\\\
 \noindent Consider the general case where \(C = |C|e^{j\theta}\) and \(a = \sigma + \mathsf{j}\omega\). The signal becomes
 \[
-  x[n] = |C|e^{\sigma n}e^{\mathsf{j}(wn + \theta)}
+	x[n] = |C|e^{\sigma n}e^{\mathsf{j}(wn + \theta)}
 \]
 \begin{itemize}
-  \item $\omega$ is \textbf{related to} angular frequency. If \(\omega \neq 2n\pi, n\in\mathbb{Z}\), the signal is periodic.\\
-        Unlike continuous-time signals, the angular frequency cannot take all values. The range is \([0, 2\pi)\) or \([-\pi, \pi)\) because
-        \[
-          e^{\mathsf{j}(\omega + 2\pi)n} = e^{\mathsf{j}\omega n}e^{\mathsf{j}2n\pi} = e^{\mathsf{j}\omega n}
-        \]
-        Rate of oscillation is small for $\omega\sim 2n\pi$, and high for $\omega\sim (2n + 1)\pi, n\in\mathbb{Z}$.
-  \item $\sigma$ is the attenuation factor. If \(\sigma \neq 0\), the signal decays/grows and is bounded by the envelope \(|C|e^{\sigma n}\).
-  \item $\theta$ is the initial phase.
+	\item $\omega$ is \textbf{related to} angular frequency. If \(\omega \neq 2n\pi, n\in\mathbb{Z}\), the signal is periodic.\\
+	      Unlike continuous-time signals, the angular frequency cannot take all values. The range is \([0, 2\pi)\) or \([-\pi, \pi)\) because
+	      \[
+		      e^{\mathsf{j}(\omega + 2\pi)n} = e^{\mathsf{j}\omega n}e^{\mathsf{j}2n\pi} = e^{\mathsf{j}\omega n}
+	      \]
+	      Rate of oscillation is small for $\omega\sim 2n\pi$, and high for $\omega\sim (2n + 1)\pi, n\in\mathbb{Z}$.
+	\item $\sigma$ is the attenuation factor. If \(\sigma \neq 0\), the signal decays/grows and is bounded by the envelope \(|C|e^{\sigma n}\).
+	\item $\theta$ is the initial phase.
 \end{itemize}
 
 \subsection{Periodicity}
 \subsubsection{Continuous-time exponential signals}
 For a continuous-time exponential signal to be periodic
 \begin{align*}
-  e^{\mathsf{j}\omega(t + T)}        & = e^{\mathsf{j}\omega t} \\
-  \Rightarrow e^{\mathsf{j}\omega T} & = 1                      \\
-  \Rightarrow \omega T               & = 2m\pi, m\in\mathbb{Z}  \\
+	e^{\mathsf{j}\omega(t + T)}        & = e^{\mathsf{j}\omega t} \\
+	\Rightarrow e^{\mathsf{j}\omega T} & = 1                      \\
+	\Rightarrow \omega T               & = 2m\pi, m\in\mathbb{Z}  \\
 \end{align*}
 Therefore, continuous-time exponential signal is periodic for all $\omega>0$ and their \textit{fundamental time period} is
 \[
-  T = \frac{2\pi}{\omega}
+	T = \frac{2\pi}{\omega}
 \]
 
 \subsubsection{Discrete-time exponential signals}
 For a discrete-time exponential signal to be periodic
 \begin{align*}
-  e^{\mathsf{j}\omega(n + N)}        & = e^{\mathsf{j}\omega n} \\
-  \Rightarrow e^{\mathsf{j}\omega N} & = 1                      \\
-  \Rightarrow \omega N               & = 2m\pi, m\in\mathbb{Z}  \\
+	e^{\mathsf{j}\omega(n + N)}        & = e^{\mathsf{j}\omega n} \\
+	\Rightarrow e^{\mathsf{j}\omega N} & = 1                      \\
+	\Rightarrow \omega N               & = 2m\pi, m\in\mathbb{Z}  \\
 \end{align*}
 Therefore, discrete-time exponential signal is periodic only if \(\displaystyle \frac{\omega}{2\pi} = \frac{m}{N}\) i.e. \(\displaystyle\frac{w}{2\pi}\) is a rational number.\\
 The \textit{fundamental period} is
 \[
-  N = m\frac{2\pi}{\omega}
+	N = m\frac{2\pi}{\omega}
 \]
 where $m$ is smallest positive integer such that $N$ evaluates to an integer.
 
 \subsection{Harmonics}
 \subsubsection{Continuous-time exponential signals}
 \[
-  \phi_k(t) = e^{\mathsf{j}k[\frac{2\pi}{T}]t} = e^{\mathsf{j}k\omega t}
+	\phi_k(t) = e^{\mathsf{j}k[\frac{2\pi}{T}]t} = e^{\mathsf{j}k\omega t}
 \]
 \subsubsection{Discrete-time exponential signals}
 \[
-  \phi_k[n] = e^{\mathsf{j}k[\frac{2\pi}{N}]n} = e^{\mathsf{j}k\frac{\omega}{m} n}
+	\phi_k[n] = e^{\mathsf{j}k[\frac{2\pi}{N}]n} = e^{\mathsf{j}k\frac{\omega}{m} n}
 \]
 
 \section{Unit Impulse and Step Functions}
 \subsection{Discrete-Time Case}
 \subsubsection{Unit Impulse}
 \[
-  \delta[n] = \begin{cases}
-    0 & n\neq 0 \\
-    1 & n = 0
-  \end{cases}
+	\delta[n] = \begin{cases}
+		0 & n\neq 0 \\
+		1 & n = 0
+	\end{cases}
 \]
 \begin{figure}[ht]
-  \centering
-  \incfig{delta_n}
-  \caption{Unit impulse function in discrete-time}
+	\centering
+	\incfig{delta_n}
+	\caption{Unit impulse function in discrete-time}
 \end{figure}
 \subsubsection{Unit Step}
 \[
-  u[n] = \begin{cases}
-    0 & n < 0    \\
-    1 & n \geq 0
-  \end{cases}
+	u[n] = \begin{cases}
+		0 & n < 0    \\
+		1 & n \geq 0
+	\end{cases}
 \]
 \begin{figure}[ht]
-  \centering
-  \incfig{u_n}
-  \caption{Unit step function in discrete-time}
+	\centering
+	\incfig{u_n}
+	\caption{Unit step function in discrete-time}
 \end{figure}
 \subsubsection{Properties}
 \begin{enumerate}
-  \item \(\delta[n] = u[n] - u[n-1]\)
-  \item \(u[n] = \sum\limits_{m = -\infty}^{n}\delta[n] = \sum\limits_{k = 0}^{\infty}\delta[n-k]\)
-  \item \textbf{Sampling Property of unit impulse function}
-        \begin{align*}
-          x[n]\cdot\delta[n]     & = x[0]\cdot\delta[n]         \\
-          x[n]\cdot\delta[n-n_0] & = x[n_0]\cdot\delta[n - n_0]
-        \end{align*}
+	\item \(\delta[n] = u[n] - u[n-1]\)
+	\item \(u[n] = \sum\limits_{m = -\infty}^{n}\delta[n] = \sum\limits_{k = 0}^{\infty}\delta[n-k]\)
+	\item \textbf{Sampling Property of unit impulse function}
+	      \begin{align*}
+		      x[n]\cdot\delta[n]     & = x[0]\cdot\delta[n]         \\
+		      x[n]\cdot\delta[n-n_0] & = x[n_0]\cdot\delta[n - n_0]
+	      \end{align*}
 \end{enumerate}
 \subsection{Continuous-Time Case}
 \subsubsection{Unit Step}
 \[
-  u(t) = \begin{cases}
-    0 & t < 0 \\
-    1 & t > 0
-  \end{cases}
+	u(t) = \begin{cases}
+		0 & t < 0 \\
+		1 & t > 0
+	\end{cases}
 \]
 \begin{figure}[ht]
-  \centering
-  \incfig{u_t}
-  \caption{Unit step function in continuous-time}
+	\centering
+	\incfig{u_t}
+	\caption{Unit step function in continuous-time}
 \end{figure}
 This function is discontinuous at $t = 0$. It is modified a little bit to make it continuous.
 \[
-  U_\Delta(t) = \begin{cases}
-    0                & t<0                 \\
-    \frac{t}{\Delta} & 0\leq t \leq \Delta \\
-    1                & t > \Delta
-  \end{cases}
+	U_\Delta(t) = \begin{cases}
+		0                & t\leq0        \\
+		\frac{t}{\Delta} & 0< t < \Delta \\
+		1                & t \geq \Delta
+	\end{cases}
 \]
 \begin{figure}[ht]
-  \centering
-  \incfig{u_delta_t}
-  \caption{Continuous unit step function in continuous-time}
+	\centering
+	\incfig{u_delta_t}
+	\caption{Continuous unit step function in continuous-time}
 \end{figure}
 
 \subsubsection{Unit Impulse}
 \begin{align*}
-  u(t)      & = \int\limits_{-\infty}^{t}\delta(\tau)d\tau \\
-  \delta(t) & = \frac{du(t)}{dt}                           \\
+	u(t)      & = \int\limits_{-\infty}^{t}\delta(\tau)d\tau \\
+	\delta(t) & = \frac{du(t)}{dt}                           \\
 \end{align*}
 Since, \(u(t)\) is not differentiable.
 \begin{align*}
-  \delta(t) & = \lim_{\Delta\rightarrow 0}\frac{dU_\Delta(t)}{dt} \\
-  \delta(t) & = \begin{cases}
-    0                & t<0                  \\
-    \frac{1}{\Delta} & 0 \leq t \leq \Delta \\
-    0                & t>\Delta
-  \end{cases}
+	\delta(t) & = \lim_{\Delta\rightarrow 0}\frac{dU_\Delta(t)}{dt} \\
+	\delta(t) & = \begin{cases}
+		0                & t\leq0         \\
+		\frac{1}{\Delta} & 0 < t < \Delta \\
+		0                & t\geq\Delta
+	\end{cases}
 \end{align*}
 \begin{figure}[ht]
-  \centering
-  \incfig{delta_t}
-  \caption{Unit impulse function in continuous-time}
+	\centering
+	\incfig{delta_t}
+	\caption{Unit impulse function in continuous-time}
 \end{figure}
 \subsubsection{Properties}
 \begin{enumerate}
-  \item \(\displaystyle\int\limits_{-\infty}^{+\infty}\delta(\tau)d\tau = 1\)
-  \item \textbf{Sampling Property of unit impulse function}
-        \begin{align*}
-          x(t)\cdot\delta(t)     & = x(0)\cdot\delta(t)         \\
-          x(t)\cdot\delta(t-t_0) & = x(t_0)\cdot\delta(t - t_0)
-        \end{align*}
+	\item \(\displaystyle\int\limits_{-\infty}^{+\infty}\delta(\tau)d\tau = 1\)
+	\item \textbf{Sampling Property of unit impulse function}
+	      \begin{align*}
+		      x(t)\cdot\delta(t)     & = x(0)\cdot\delta(t)         \\
+		      x(t)\cdot\delta(t-t_0) & = x(t_0)\cdot\delta(t - t_0)
+	      \end{align*}
 \end{enumerate}
 
 \section{Systems}
@@ -263,39 +263,194 @@ System is the interconnection of components/devices/subsystems. A \textit{contin
 
 \subsection{Interconnection of Systems}
 \begin{enumerate}
-  \item \textbf{Series (Cascade) Connection}
-        \begin{figure}[ht]
-          \centering
-          \incfig{series_interconnection}
-          \caption{Example of series interconnection}
-        \end{figure}
-  \item \textbf{Parallel Connection}
-        \begin{figure}[ht]
-          \centering
-          \incfig{parallel_interconnection}
-          \caption{Example of parallel interconnection}
-        \end{figure}
-  \item \textbf{Series-Parallel Connection}\\
-        It is combination of series and parallel connections.
-  \item \textbf{Feedback Interconnection}\\
-        In this kind of interconnection, some part of output is again fed as input to the system.
-        \begin{figure}[ht]
-          \centering
-          \incfig{feedback_interconnection}
-          \caption{Example of feedback interconnection}
-        \end{figure}
+	\item \textbf{Series (Cascade) Connection}
+	      \begin{figure}[ht]
+		      \centering
+		      \incfig{series_interconnection}
+		      \caption{Example of series interconnection}
+	      \end{figure}
+	\item \textbf{Parallel Connection}
+	      \begin{figure}[ht]
+		      \centering
+		      \incfig{parallel_interconnection}
+		      \caption{Example of parallel interconnection}
+	      \end{figure}
+	\item \textbf{Series-Parallel Connection}\\
+	      It is combination of series and parallel connections.
+	\item \textbf{Feedback Interconnection}\\
+	      In this kind of interconnection, some part of output is again fed as input to the system.
+	      \begin{figure}[ht]
+		      \centering
+		      \incfig{feedback_interconnection}
+		      \caption{Example of feedback interconnection}
+	      \end{figure}
 \end{enumerate}
 
-\subsection{Basic Properties}
+\section{Basic Properties of a System}
 Some basic properties of a system are
 \begin{enumerate}
-  \item Memory
-  \item Invertibility
-  \item Causality
-  \item Stability
-  \item Time-invariance
-  \item Linearity
+	\item Memory
+	\item Invertibility
+	\item Causality
+	\item Stability
+	\item Time-invariance
+	\item Linearity
 \end{enumerate}
+
+In all examples below, $x(t)$(or $x[n]$) is the input to the system $y(t)$(or $y[n]$).
+
+\subsection{Memory}
+Systems can be divided into two classes on basis of memory:
+\begin{enumerate}
+	\item \textbf{Memoryless:} System whose output depends only on present input.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y[n] = (2x[n] - x^2[n])^2\)
+		      \item \(y(t) = Rx(t)\)
+	      \end{itemize}
+	\item \textbf{With memory:} System whose output depends on past/future value also.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y[n] = x[n-1]\)
+		      \item \(y[n] = \sum\limits_{k = -\infty}^n x[k]\)
+		      \item \(y(t) = \frac{1}{c}\int\limits_{-\infty}^{\infty}x(\tau)d\tau\)
+	      \end{itemize}
+\end{enumerate}
+
+\subsection{Invertibility}
+Systems can be divided into two classes on basis of invertibility:
+\begin{enumerate}
+	\item \textbf{Invertible:} Systems for which distinct input leads to distinct outputs (i.e. they are one-one and onto).\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = 2 x(t)\)
+	      \end{itemize}
+	      When a system and its inverse system are cascaded then output is same as input and such group of system is called \textit{identity systems} (\(x(t) = t\)).
+	\item \textbf{Non-invertible:} Systems which are not invertible.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = c\)
+	      \end{itemize}
+\end{enumerate}
+
+\subsection{Causality}
+Systems can be divided into two classes on basis of causality:
+\begin{enumerate}
+	\item \textbf{Causal/Non-anticipative:} Systems whose output is dependent only on present and past (but not future) values of the input.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item All memoryless systems(they use only present input)
+	      \end{itemize}
+	      All practical systems are causal, unless they use recorded signals as future values.\\\\
+	      \noindent\textbf{Note: } \textit{Causal signals} are signals which start after $t=0$, \textit{non-causal signals} are signals that start before $t=0$ and \textit{anti-causal signals} are signals that end after $t=0$.
+	\item \textbf{Non-causal system:} Systems which are not causal.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = x(t+1)\)
+	      \end{itemize}
+\end{enumerate}
+
+\subsection{Stablility}
+Systems which produce bounded output for bounded input are called \textit{stable system}. Such systems are are called BIBO(bounded input, bounded output) stable.\\
+\textsc{Examples}
+\begin{itemize}
+	\item Charging/discharging capacitor
+\end{itemize}
+\noindent\textbf{Note: } A signal is called bounded if \(\exists\ B > 0\) such that the signal magnitude never exceeds \(B\). \cite{bibo_stability_wiki}
+
+\subsection{Time Invariance}
+Systems can be divided into two classes on basis of time-invariance:
+\begin{enumerate}
+	\item \textbf{Time invariant:} System whose output does not depend on the instant or time of applying the input. Delay in input produces same delay in output.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = x(t)\)
+	      \end{itemize}
+	\item \textbf{Time variant:} Systems whose output depend on the time of application of input.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = tx(t)\),
+	      \end{itemize}
+\end{enumerate}
+
+\subsection{Linearity}
+Systems can be divided into two classes on basis of linearity:
+\begin{enumerate}
+	\item \textbf{Linear:} Systems that can be superimposed i.e. they are additive and homogeneous.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = x(t_0)\)
+	      \end{itemize}
+	      \textbf{Additivity:} If \(x_1(t) \rightarrow y_1(t)\) and \(x_2(t) \rightarrow y_2(t)\), then
+	      \[
+		      x_1(t) + x_2(t) \rightarrow y_1(t) + y_2(t)
+	      \]
+	      \textbf{Homogenity:} If \(x(t) \rightarrow y(t)\), then
+	      \[
+		      ax(t) \rightarrow ay(t)\quad (a\in\mathbb{C})
+	      \]
+	\item \textbf{Non-linear:} Systems which do not follow additivity or homogenity or both.\\
+	      \textsc{Examples}
+	      \begin{itemize}
+		      \item \(y(t) = x^2(t) + c\)
+	      \end{itemize}
+\end{enumerate}
+
+\section{Linear Time Invariant(LTI) Systems}
+Unit impulse signal will be used as a basis for creating other signals. In other words, we will be writing signals as a linear combination of shifted unit-impulse signals.
+\subsection{Discrete-Time LTI Systems}
+Consider an arbitrary signal $x[n]$, it can be represented as linear combination of shifted unit-impulse signals.
+\begin{align}
+	x[n] = \sum\limits_{k = -\infty}^{\infty}x[k]\delta[n-k]
+	\label{discrete_signal_as_sum_of_unit_impulses}
+\end{align}
+This is called \textit{sifting property} of impulse in discrete-time case.
+\\\\
+\noindent Let $h_k[n]$ be the impulse response (system response to the unit-impulse $\delta[n - k]$). ($h_0 = h$)\\\\
+\noindent\(\because\) System is linear\\
+\(\therefore\) From \cref{discrete_signal_as_sum_of_unit_impulses}, combining the system response to different unit impulses will give the output
+\begin{align}
+	y[n] = \sum\limits_{k = -\infty}^{\infty}x[k]h_k[n]
+	\label{discrete_response_of_system_using_linear_property}
+\end{align}
+\noindent\(\because\) System is time-invariant\\
+\(\therefore h_k[n] = h[n-k]\)\\
+The \cref{discrete_response_of_system_using_linear_property}, reduces to
+\begin{align}
+	y[n] = \sum\limits_{k = -\infty}^{\infty}x[k]h[n-k]
+	\label{discrete_response_of_system_using_time_invariant_property}
+\end{align}
+Using convolution sum\cite{convolution_wiki}, \cref{discrete_response_of_system_using_time_invariant_property} reduces to
+\begin{align*}
+	y[n] = x[n]*h[n]
+\end{align*}
+
+\subsection{Continuous-Time LTI Systems}
+Like discrete-time case, we can write any arbitrary signal $x(t)$ as a linear combination of shifted unit-impulse signals.
+\begin{align}
+	x(t) = \int\limits_{-\infty}^{\infty}x(\tau)\delta(t - \tau)d\tau
+	\label{continuous_signal_as_sum_of_unit_impulses}
+\end{align}
+This is called \textit{sifting property} of impulse in continuous-time case.
+\\\\
+\noindent Let $h_\tau(t)$ be the impulse response (system response to the unit-impulse $\delta(t - \tau)$). ($h_0 = h$)\\\\
+\noindent\(\because\) System is linear\\
+\(\therefore\) From \cref{continuous_signal_as_sum_of_unit_impulses}, combining the system response to different unit impulses will give the output
+\begin{align}
+	y(t) = \int\limits_{-\infty}^{\infty}x(\tau)h_\tau(t)d\tau
+	\label{continuous_response_of_system_using_linear_property}
+\end{align}
+\noindent\(\because\) System is time-invariant\\
+\(\therefore h_\tau(t) = h(t-\tau)\)\\
+The \cref{continuous_response_of_system_using_linear_property}, reduces to
+\begin{align}
+	y(t) = \int\limits_{-\infty}^{\infty}x(\tau)h(t - \tau)d\tau
+	\label{continuous_response_of_system_using_time_invariant_property}
+\end{align}
+Using convolution integral\cite{convolution_wiki}, \cref{continuous_response_of_system_using_time_invariant_property} reduces to
+\begin{align*}
+	y(t) = x(t)*h(t)
+\end{align*}
 
 \bibliographystyle{unsrt}
 \bibliography{main}
