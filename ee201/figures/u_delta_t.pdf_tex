@@ -55,7 +55,7 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{u_delta_t.pdf}}%
     \put(0.94686334,0.05266792){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t$\end{tabular}}}}%
-    \put(0.46939176,0.40834691){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U_\Delta(t)$\end{tabular}}}}%
+    \put(0.46939176,0.40834691){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$u_\Delta(t)$\end{tabular}}}}%
     \put(0.46901668,0.00329858){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0.5917695,0.00329858){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\Delta$\end{tabular}}}}%
     \put(0.44371942,0.27113089){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%

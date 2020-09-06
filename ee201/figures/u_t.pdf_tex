@@ -55,7 +55,7 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{u_t.pdf}}%
     \put(0.94686334,0.04987682){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t$\end{tabular}}}}%
-    \put(0.46939176,0.40555581){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U[n]$\end{tabular}}}}%
+    \put(0.46939176,0.40555581){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$u(t)$\end{tabular}}}}%
     \put(0.46901668,0.00050747){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0.44516926,0.26804984){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{u_t.pdf}}%
