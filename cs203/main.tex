@@ -796,12 +796,14 @@ There are three basic operations in boolean algebra.
 In simple words, if in a boolean equation, all 0s and 1s are exchanged and all OR operators and all AND operators are exchanged with each other, the boolean equation continues to hold its validity.
 
 \section{Simplification Theorems}
+\label{simplification_theorems_section}
 \begin{enumerate}
 	\item \textbf{Uniting}\\
 	      \begin{align*}
 		      X\cdot Y + X\cdot Y^\prime  & = X \\
 		      (X + Y)\cdot (X + Y^\prime) & = X
 	      \end{align*}
+	      \label{uniting_theorem}
 	\item \textbf{Absorption}\\
 	      \begin{align*}
 		      X+ X\cdot Y    & = X \\
@@ -822,19 +824,92 @@ In simple words, if in a boolean equation, all 0s and 1s are exchanged and all O
 \section{Standard Boolean Expressions}
 $A, A^\prime, B, $ etc. are called \textit{literals} and $AB, BC^\prime A, $ etc. are called \textit{terms}.
 \begin{enumerate}
-	\item \textbf{Sum of products}\\
+	\item \textbf{Sum of products (SOP)}\\
 	      \textsc{Examples}:
 	      \begin{itemize}
 		      \item $AB^\prime + BCD + A^\prime C$
 		      \item $A^\prime + B^\prime + C^\prime + DE$
 	      \end{itemize}
-	\item \textbf{Products of sum}\\
+	\item \textbf{Products of sum (POS)}\\
 	      \textsc{Examples}:
 	      \begin{itemize}
 		      \item $(A + B^\prime)(B + C + D)(A^\prime + C)$
 		      \item $A^\prime B C^\prime (D + E)$
 	      \end{itemize}
 \end{enumerate}
+
+\section{Minimizing Boolean Function}
+To reduce cost and improve performance, boolean functions are minimized. We will try to develope a systematic and procedural approach.
+\subsection{Canonical/Standard Forms}
+There can be several equivalent boolean expressions. Therefore, we need to have a standard form.
+\subsubsection{Minterm}
+We get 4 boolean terms by combining two variables $x$ and $y$ with logical $AND$ operation. These boolean product terms are called \textit{minterms} or \textit{standard product terms}.\cite{minterm_maxterm_definition}
+\subsubsection{Minterm}
+We get 4 boolean terms by combining two variables $x$ and $y$ with logical $OR$ operation. These boolean product terms are called \textit{maxterms} or \textit{standard sum terms}.\cite{minterm_maxterm_definition}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|r|cc|c|c|}
+		\hline
+		$\mathbf{i}$ & $\mathbf{x}$ & $\mathbf{y}$ & \textbf{Minterm} ($m_i$) & \textbf{Maxterm} ($M_i$) \\
+		\hline
+		0            & 0            & 0            & $x^\prime y^\prime$      & $x + y$                  \\
+		1            & 0            & 1            & $x^\prime y$             & $x + y^\prime$           \\
+		2            & 1            & 0            & $x y^\prime$             & $x^\prime + y$           \\
+		3            & 1            & 1            & $x y$                    & $x^\prime + y^\prime$    \\
+		\hline
+	\end{tabular}
+	\caption{Minterms and maxterms for two variables $x$ and $y$}
+\end{table}
+There are 2 cannoical forms
+\begin{enumerate}
+	\item \textbf{Cannonical SoP - Sum of product}
+	      Each term should contain all the variables - either in normal or complemented form i.e. each term in SoP is a minterm. So a function in SoP form can be written as
+	      \[
+		      F = m_{i_1} + m_{i_2} + \cdots  = \sum m(i_1, i_2, \ldots)
+	      \]
+	\item \textbf{Cannonical PoS - Product of sum}
+	      Each sum term should contain all the variables - either in normal or complemented form i.e. each term in PoS is a maxterm. So a function in PoS form can be written as
+	      \[
+		      F = M_{i_1} \cdot M_{i_2} \cdot \cdots  = \prod M(i_1, i_2, \ldots)
+	      \]
+\end{enumerate}
+\subsubsection{Properties}
+\begin{itemize}
+	\item Cannonical PoS and SoP forms are complementary.
+	      \[
+		      F = \prod M(0, 1, 2, 4, 6) = \sum m(3, 5, 7)
+	      \]
+	\item DeMorgen's law
+	      \begin{align*}
+		      F = \sum m(3, 5, 7)         & = a^\prime bc + ab^\prime c + abc                                                    \\
+		      F^\prime = \prod M(3, 5, 7) & = (a + b^\prime + c^\prime)(a^\prime + b + c^\prime)(a^\prime + b^\prime + c^\prime)
+	      \end{align*}
+\end{itemize}
+The expressions in cannonical form can be simplified using \textit{uniting theorem}(theorem \ref{uniting_theorem} in \cref{simplification_theorems_section}).
+
+\subsection{Incompletely Specified Functions}
+An \textit{incompletely specified function} is a boolean function that only define values for a subset of its inputs. The undefined outputs are called \textbf{don't care}.\cite{incompletely_specified_function}
+\\\\
+\textbf{Example:}
+\[
+	F(a, b) = \sum m(1) + \sum d(0, 3)
+\]
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|cc|c|}
+		\hline
+		$\mathbf{a}$ & $\mathbf{b}$ & $\mathbf{F(a, b)}$ \\
+		\hline
+		0            & 0            & \textcolor{red}{?} \\
+		0            & 1            & 1                  \\
+		1            & 0            & 0                  \\
+		1            & 1            & \textcolor{red}{?} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Karnaugh Map}
+Visit \url{https://en.wikipedia.org/wiki/Karnaugh_map} to learn about Karnaugh maps. \cite{karnaugh_map_wiki}
 
 \bibliographystyle{unsrt}
 \bibliography{main}
