@@ -208,7 +208,22 @@ Consider the first order DE of the form
 		y(x_0) = y_0
 	\end{cases}
 \]
-This type of DE is called \textit{initial value problem}(IVP). and \(y(x_0) = y_0\) is called an \textit{initial condition}.
+where \(f\) is a real-valued function defined in some domain \(D\) in \(xy\)-plane.
+\[
+	D = \{(x, y): a\leq x \leq b, c\leq y \leq d\}
+\]
+where \(a, b, c\) and \(d\) re real finite constants.\\
+
+\noindent This type of DE is called \textit{initial value problem}(IVP). and \(y(x_0) = y_0\) is called an \textit{initial condition}.
+A IVP may have zero, one, finite or infinite solutions.
+
+\subsection{Peano Existence Theorem}
+\noindent\textit{Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) is a \textbf{continuous} function in the domain \(D\), then there exists a solution to the initial value problem on some interval \(I = (x_0 - h, x_0 + h)\) where \(h>0\), sufficiently small.}
+
+\subsection{Picard Existence and Uniqueness Theorem}
+\noindent\textit{Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) and \(\frac{\partial f}{\partial y}(x, y)\) are \textbf{continuous} function in the domain \(D\), then there exists some interval \(I = (x_0 - h, x_0 + h)\), \(h>0\) contained in \([a, b]\) and a \textbf{unique} function \(\phi(x)\) defined on \(I\) that is a solution of the initial value problem.}
+\\\\
+\noindent\textbf{Note:} If \(f(x, y)\) does not satisfy the hypotheses of \textit{Picard Existence and Uniqueness Theorem}, then we \textbf{cannot} conclude about the solution.
 
 \bibliographystyle{unsrt}
 \bibliography{main}
