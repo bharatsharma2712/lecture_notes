@@ -687,6 +687,7 @@ These boolean values can be represented by bits - 0 for \textit{false} and 1 for
 \noindent A \textit{boolean function} is a function that takes boolean inputs, performs only boolean operations and returns a boolean output.
 A \textit{truth table} is a table listing outcomes of a function for every combination of input variables.
 \section{Basic Operations}
+\label{basic_boolean_operations_section}
 There are three basic operations in boolean algebra.
 \begin{enumerate}
 	\item \textbf{AND}\\
@@ -910,6 +911,81 @@ An \textit{incompletely specified function} is a boolean function that only defi
 
 \subsection{Karnaugh Map}
 Visit \url{https://en.wikipedia.org/wiki/Karnaugh_map} to learn about Karnaugh maps. \cite{karnaugh_map_wiki}
+
+\section{Logic Gates}
+We have already discussed 3 gates in \cref{basic_boolean_operations_section}. We will see some more gates in this section.
+\begin{enumerate}
+	\item \textbf{XOR}\\
+	      XOR of n-inputs is $1$ if number of inputs having value $1$ are odd.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $A\oplus B$ \\
+			      \hline
+			      0   & 0   & 0           \\
+			      0   & 1   & 1           \\
+			      1   & 0   & 1           \\
+			      1   & 1   & 0           \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for XOR}
+		      \label{truth_table_for_xor}
+	      \end{table}
+	\item \textbf{XNOR}\\
+	      XNOR of n-inputs is $1$ if number of inputs having value $1$ are even. It is the inversion of XOR.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $A\odot B$ \\
+			      \hline
+			      0   & 0   & 1          \\
+			      0   & 1   & 0          \\
+			      1   & 0   & 0          \\
+			      1   & 1   & 1          \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for XNOR}
+		      \label{truth_table_for_xnor}
+	      \end{table}
+	\item \textbf{NAND}\\
+	      NAND is AND followed by NOT.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $(A\cdot B)^\prime$ \\
+			      \hline
+			      0   & 0   & 1                   \\
+			      0   & 1   & 1                   \\
+			      1   & 0   & 1                   \\
+			      1   & 1   & 0                   \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for NAND}
+		      \label{truth_table_for_nand}
+	      \end{table}
+	\item \textbf{NOR}\\
+	      NOR is OR followed by NOT.
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|cc|c|}
+			      \hline
+			      $A$ & $B$ & $(A+ B)^\prime$ \\
+			      \hline
+			      0   & 0   & 1               \\
+			      0   & 1   & 0               \\
+			      1   & 0   & 0               \\
+			      1   & 1   & 0               \\
+			      \hline
+		      \end{tabular}
+		      \caption{Truth table for NOR}
+		      \label{truth_table_for_nor}
+	      \end{table}
+\end{enumerate}
+
+NAND and NOR gates are universal gates. We can make all other gates using NAND or NOR gates only.
 
 \bibliographystyle{unsrt}
 \bibliography{main}
