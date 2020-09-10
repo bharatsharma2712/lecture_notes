@@ -263,6 +263,24 @@ A point on the supply curve gives two things:
 	\item Minimum price necessary to induce producers to voluntarily offer a particular quantity for safe.
 \end{enumerate}
 
+\section{Simple Linear Regression}
+Simple linear regression model relates dependent variable \(Y\) to one independent(or explanatory) variable \(X\)
+\begin{align}
+	Y = a + bX
+	\label{simple_linear_regression_actual_equation}
+\end{align}
+\subsection{Method of Least Squares}
+In this method of linear regression, the \(a\) and \(b\) are chosen so as to minimize the sum of squared residuals\((\sum_{i}(Y_i - \hat{Y_i})^2)\).
+Residual is the difference between actual and fitted values of \(Y\).
+\[
+	\text{Residual} = Y_i - \hat{Y_i}
+\]
+If \cref{simple_linear_regression_actual_equation} is actual relation, then the approximated relation can be written as
+\[
+	\hat{Y} = \hat{a} + \hat{b}X
+\]
+
+
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
