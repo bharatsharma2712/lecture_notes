@@ -910,7 +910,15 @@ An \textit{incompletely specified function} is a boolean function that only defi
 \end{table}
 
 \subsection{Karnaugh Map}
-Visit \url{https://en.wikipedia.org/wiki/Karnaugh_map} to learn about Karnaugh maps. \cite{karnaugh_map_wiki}
+Karnaugh maps are graphical method of minimizing boolean expressions.\\
+Visit \url{https://en.wikipedia.org/wiki/Karnaugh_map} to learn about Karnaugh maps. \cite{karnaugh_map_wiki}\\\\
+\noindent\url{https://www.charlie-coleman.com/experiments/kmap/} is a popular solver.
+
+\subsection{Quine-McCluskey Method}
+Karnaugh map becomes very difficult when number of variables increase. Here, Quine-McCluskey method comes to rescue.\\
+Visit \url{https://en.wikipedia.org/wiki/Quine-McCluskey_algorithm} to learn about Quine-McCluskey methods. \cite{quine_mccluskey_algorithm_wiki}\\\\
+\noindent\url{http://quinemccluskey.com/} is a popular solver. I think it failed for \(f(a,b,c) = \sum m(0,1,2,5,6,7)\).\\\\
+\noindent\url{https://www.mathematik.uni-marburg.de/~thormae/lectures/ti1/code/qmc/} is a good solver.
 
 \section{Logic Gates}
 We have already discussed 3 gates in \cref{basic_boolean_operations_section}. We will see some more gates in this section.
@@ -985,7 +993,7 @@ We have already discussed 3 gates in \cref{basic_boolean_operations_section}. We
 	      \end{table}
 \end{enumerate}
 
-NAND and NOR gates are universal gates. We can make all other gates using NAND or NOR gates only.
+\noindent NAND and NOR gates are universal gates. We can make all other gates using NAND or NOR gates only.
 
 \bibliographystyle{unsrt}
 \bibliography{main}
