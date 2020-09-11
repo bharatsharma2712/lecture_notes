@@ -452,6 +452,64 @@ Using convolution integral\cite{convolution_wiki}, \cref{continuous_response_of_
 	y(t) = x(t)*h(t)
 \end{align*}
 
+\textbf{Corollary:} Impulse response is complete characterization of LTI system.
+
+\subsection{Properties of LTI Systems}
+The properties given below are for LTI systems only.
+\begin{enumerate}
+	\item \textbf{Commutative Property}
+	      \[
+		      y(t) = x(t) * h(t) = h(t) * x(t)
+	      \]
+	      \[
+		      y[n] = x[n] * h[n] = h[n] * x[n]
+	      \]
+	\item \textbf{Distributive Property}
+	      \begin{align*}
+		      x(t)*[h_1(t) + h_2(t)] & = x(t)*h_1(t) + x(t)*h_2(t) \\
+		      x[n]*[h_1[n] + h_2[n]] & = x[n]*h_1[n] + x[n]*h_2[n]
+	      \end{align*}
+	\item \textbf{Associative Property}
+	      \begin{align*}
+		      x[n]*[h_1[n] *h_2[n]] & = [x[n]*h_1[n]]*h_2[n] \\
+		      x(t)*[h_1(t) *h_2(t)] & = [x(t)*h_1(t)]*h_2(t)
+	      \end{align*}
+	\item When LTI system is memoryless\\
+	      \(h[n] = 0 \text{ for } n \neq 0\) and \(h(t) = 0 \text{ for } t \neq 0\)
+	      \begin{align*}
+		      h(t) & = k\delta(t) & y(t) & = kx(t) \\
+		      h[n] & = k\delta[n] & y[n] & = kx[n]
+	      \end{align*}
+	      \textbf{Note: } \(x(t)*\delta(t) = x(t)\) and \(x[n]*\delta[n] = x[n]\)
+	\item LTI system \(h_1(t)\)\textcolor{gray}{(or \(h_1[n]\))} is invertible if \(\exists\ h_2(t)\)\textcolor{gray}{(or \(h_2[n]\))}, such that
+	      \begin{align*}
+		      h_1(t)*h_2(t)                                & = \delta(t)                   \\
+		      \textcolor{gray}{\text{or } h_1[n] * h_2[n]} & \textcolor{gray}{= \delta[n]}
+	      \end{align*}
+	\item When LTI system is causal
+	      \begin{align*}
+		      y[n] & = \sum\limits_{k = -\infty}^{\infty} x[k]h[n-k]                          \\
+		           & = \sum\limits_{k = -\infty}^n x[k]h[n-k]\quad{(\because\ x[k] = 0, k>n)} \\
+		           & = \sum\limits_{k = 0}^\infty x[n-k]h[k]
+	      \end{align*}
+	      \begin{align*}
+		      y(t) & = \int\limits_{-\infty}^{\infty} x(\tau)h(t-\tau)d\tau                                \\
+		           & = \int\limits_{-\infty}^t x(\tau)h(t-\tau)d\tau\quad{(\because\ x(\tau) = 0, \tau>t)} \\
+		           & = \int\limits_{0}^\infty x(t-\tau)h(\tau)
+	      \end{align*}
+	      So, we can also say that for a causal \textbf{system}
+	      \begin{align*}
+		      h(t) & = 0\ \forall\ t<0 \\
+		      h[n] & = 0\ \forall\ n<0
+	      \end{align*}
+	      Similarly, for a causal \textbf{signal}
+	      \begin{align*}
+		      x(t) & = 0\ \forall\ t<0 \\
+		      x[n] & = 0\ \forall\ n<0
+	      \end{align*}
+	      \textbf{Initial test: } A causal system gives no output unless an input is given.
+\end{enumerate}
+
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
