@@ -995,6 +995,20 @@ We have already discussed 3 gates in \cref{basic_boolean_operations_section}. We
 
 \noindent NAND and NOR gates are universal gates. We can make all other gates using NAND or NOR gates only.
 
+\section{Cost}
+Cost is determined by \textit{area} and \textit{delay}.
+\subsection{Area}
+The amount of silicon required is a way to consider area. We can also see area as the number of gates required.
+
+\subsection{Delay}
+Delay is the amount of time required for processing(time-different between output and input). If \textit{fan-in}(\(F_{in}\)) is the number of input gates and \textit{fan-out}(\(F_{out}\)) is the number of output gates, then
+\[
+	\text{Propagation Delay } (T_p) = a_1F_{in} + a_2F_{in}^2 + a_3F_{out}
+\]
+Transistor size of usually modifies for large fan-in gates.
+\\\\
+\noindent\textbf{Note: } Propagation delay for \(0 \to 1\) and \(1 \to 0\) may be different. We generally take max of both delays and consider it the propagation delay of the gate.
+
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
