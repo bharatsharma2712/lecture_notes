@@ -218,29 +218,29 @@ where \(a, b, c\) and \(d\) re real finite constants.\\
 A IVP may have zero, one, finite or infinite solutions.
 
 \subsection{Peano Existence Theorem}
-\noindent\textit{Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) is a \textbf{continuous} function in the domain \(D\), then there exists a solution to the initial value problem on some interval \(I = (x_0 - h, x_0 + h)\) where \(h>0\), sufficiently small.}
+\noindent Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) is a \textbf{continuous} function in the domain \(D\), then there exists a solution to the initial value problem on some interval \(I = (x_0 - h, x_0 + h)\) where \(h>0\), sufficiently small.
 
 \subsection{Picard Existence and Uniqueness Theorem}
-\noindent\textit{Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) and \(\frac{\partial f}{\partial y}(x, y)\) are \textbf{continuous} function in the domain \(D\), then there exists some interval \(I = (x_0 - h, x_0 + h)\), \(h>0\) contained in \([a, b]\) and a \textbf{unique} function \(\phi(x)\) defined on \(I\) that is a solution of the initial value problem.}
+\noindent Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) and \(\frac{\partial f}{\partial y}(x, y)\) are \textbf{continuous} function in the domain \(D\), then there exists some interval \(I = (x_0 - h, x_0 + h)\), \(h>0\) contained in \([a, b]\) and a \textbf{unique} function \(\phi(x)\) defined on \(I\) that is a solution of the initial value problem.
 \\\\
 \noindent\textbf{Note:} If \(f(x, y)\) does not satisfy the hypotheses of \textit{Picard Existence and Uniqueness Theorem}, then we \textbf{cannot} conclude about the solution.
 
 \subsection{Lipschitz Condition}
-\noindent\textit{The function \(f: D\to\mathbb{R}\) is said to be \textsc{Lipschitz} w.r.t. \(y\) in \(D\) if \(\exists\ k>0\) such that}
+\noindent The function \(f: D\to\mathbb{R}\) is said to be \textsc{Lipschitz} w.r.t. \(y\) in \(D\) if \(\exists\ k>0\) such that
 \[
 	|f(x, y_1) - f(x, y_2)| \leq k|y_1 - y_2|
 \]
-\textit{for all \((x, y_1), (x, y_2) \in D\).}
+for all \((x, y_1), (x, y_2) \in D\).
 \\\\
 \noindent \(k\) is called \textit{Lipschitz constant}.
 
 \subsection{Picard Existence and Uniqueness Theorem - 2}
-\textit{Let \(D\) be a rectangular domain that contains point \((x_0, y_0)\) in its interior. Let \(f\) satisfies the following two conditions:}
+Let \(D\) be a rectangular domain that contains point \((x_0, y_0)\) in its interior. Let \(f\) satisfies the following two conditions:
 \begin{enumerate}
-	\item \textit{\(f(x, y)\) is continuous in \(D\)}
-	\item \textit{\(f(x, y)\) satisfies a Lipschitz condition w.r.t. in \(y\) in \(D\)}
+	\item \(f(x, y)\) is continuous in \(D\)
+	\item \(f(x, y)\) satisfies a Lipschitz condition w.r.t. in \(y\) in \(D\)
 \end{enumerate}
-\textit{Consider the rectangle \(R: |x - x_0| \leq \alpha, |y- y_0|\leq \beta\) in \(D\). Then, there exists a \textbf{unique} solution to the IVP in the interval \(I = [x_0 - h, x_0 + h]\), where \(h = min\{\alpha, \frac{\beta}{M}\}, M = \max\limits_{(x, y)\in\mathbb{R}}|f(x, y)|\)}.
+Consider the rectangle \(R: |x - x_0| \leq \alpha, |y- y_0|\leq \beta\) in \(D\). Then, there exists a \textbf{unique} solution to the IVP in the interval \(I = [x_0 - h, x_0 + h]\), where \(h = \min\{\alpha, \frac{\beta}{M}\}, M = \max\limits_{(x, y)\in{R}}|f(x, y)|\).
 
 
 \bibliographystyle{unsrt}
