@@ -220,7 +220,7 @@ A IVP may have zero, one, finite or infinite solutions.
 \subsection{Peano Existence Theorem}
 \noindent Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) is a \textbf{continuous} function in the domain \(D\), then there exists a solution to the initial value problem on some interval \(I = (x_0 - h, x_0 + h)\) where \(h>0\), sufficiently small.
 
-\subsection{Picard Existence and Uniqueness Theorem}
+\subsection{Picard's Existence and Uniqueness Theorem}
 \noindent Let \(D\) be a rectangular domain that contains point \(x_0, y_0\) in its interior. If \(f(x, y)\) and \(\frac{\partial f}{\partial y}(x, y)\) are \textbf{continuous} function in the domain \(D\), then there exists some interval \(I = (x_0 - h, x_0 + h)\), \(h>0\) contained in \([a, b]\) and a \textbf{unique} function \(\phi(x)\) defined on \(I\) that is a solution of the initial value problem.
 \\\\
 \noindent\textbf{Note:} If \(f(x, y)\) does not satisfy the hypotheses of \textit{Picard Existence and Uniqueness Theorem}, then we \textbf{cannot} conclude about the solution.
@@ -234,7 +234,7 @@ for all \((x, y_1), (x, y_2) \in D\).
 \\\\
 \noindent \(k\) is called \textit{Lipschitz constant}.
 
-\subsection{Picard Existence and Uniqueness Theorem - 2}
+\subsection{Picard's Existence and Uniqueness Theorem - 2}
 Let \(D\) be a rectangular domain that contains point \((x_0, y_0)\) in its interior. Let \(f\) satisfies the following two conditions:
 \begin{enumerate}
 	\item \(f(x, y)\) is continuous in \(D\)
@@ -242,6 +242,27 @@ Let \(D\) be a rectangular domain that contains point \((x_0, y_0)\) in its inte
 \end{enumerate}
 Consider the rectangle \(R: |x - x_0| \leq \alpha, |y- y_0|\leq \beta\) in \(D\). Then, there exists a \textbf{unique} solution to the IVP in the interval \(I = [x_0 - h, x_0 + h]\), where \(h = \min\{\alpha, \frac{\beta}{M}\}, M = \max\limits_{(x, y)\in{R}}|f(x, y)|\).
 
+\subsection{Picard's Method of Successive Approximations}
+In the IVP
+\begin{align*}
+	\begin{cases}
+		\frac{dy}{dx} = f(x, y) \\
+		y(x_0) = y_0
+	\end{cases}
+\end{align*}
+Approximations are as follows
+\begin{align*}
+	y_1(x) & = y_0 + \int_{x_0}^{x}f(t, y_0)dt\qquad \text{ First approximation}             \\
+	y_2(x) & = y_0 + \int_{x_0}^{x}f(t, y_1(t))dt\qquad \text{ Second approximation}         \\
+	\vdots                                                                                   \\
+	y_n(x) & = y_0 + \int_{x_0}^{x}f(t, y_{n-1}(t))dt\qquad \text{ \(n^{th}\) approximation}
+\end{align*}
+These approximations converge to the solution of the IVP
+\begin{center}
+	\fbox{
+		$\text{Solution} = \lim_{n\to\infty}y_n(x)$
+	}
+\end{center}
 
 \bibliographystyle{unsrt}
 \bibliography{main}
