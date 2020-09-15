@@ -486,6 +486,7 @@ The properties given below are for LTI systems only.
 		      h_1(t)*h_2(t)                                & = \delta(t)                   \\
 		      \textcolor{gray}{\text{or } h_1[n] * h_2[n]} & \textcolor{gray}{= \delta[n]}
 	      \end{align*}
+	      and \(h_2(t)\)\textcolor{gray}{(or \(h_2[n]\))} is its inverse.
 	\item When LTI system is causal
 	      \begin{align*}
 		      y[n] & = \sum\limits_{k = -\infty}^{\infty} x[k]h[n-k]                          \\
@@ -508,7 +509,52 @@ The properties given below are for LTI systems only.
 		      x[n] & = 0\ \forall\ n<0
 	      \end{align*}
 	      \textbf{Initial test: } A causal system gives no output unless an input is given.
+	\item When LTI system is stable
+	      \begin{align*}
+		      |x[n]| & \leq B\quad \forall\ n                                     \\
+		      |y[n]| & = \bigl|\sum\limits_{k = -\infty}^{\infty}x[n]h[n-k]\bigl| \\
+		      |y[n]| & \leq \sum\limits_{k = -\infty}^{\infty}|x[n]|\cdot|h[n-k]| \\
+		      |y[n]| & \leq B\sum\limits_{k = -\infty}^{\infty}|\cdot|h[n-k]|     \\
+	      \end{align*}
+	      Therefore, for a system to be stable the `impulse response must be absolutely integrable'.
+	      \begin{align*}
+		      \sum\limits_{k = -\infty}^{\infty}|h[k]|     & < \infty \\
+		      \int\limits_{-\infty}^{\infty}|h(\tau)|d\tau & < \infty \\
+	      \end{align*}
 \end{enumerate}
+
+\subsection{Unit Step Response}
+Unit step response(response to a unit step signal) is denoted by \(s[n]\) or \(s(t)\). It can be calculated using impulse response.
+\begin{align*}
+	s[n] & = u[n]*h[n]                             \\
+	     & = \sum\limits_{k = -\infty}^{n}h[k]     \\
+	s(t) & = u(t)*h(t)                             \\
+	     & = \int\limits_{-\infty}^{t}h(\tau)d\tau
+\end{align*}
+Similarly, impulse response can be calculated from step response.
+\begin{align*}
+	h[n] & = s[n] - s[n-1]                  \\
+	h(t) & = \frac{ds(t)}{dt} = s^\prime(t)
+\end{align*}
+
+\subsection{Differential Equation}
+An LTI system, in continuous-time case, can be represented using \textbf{linear} differential equation with \textbf{constant coefficients}. A general \(N^{th}\) order linear constant coefficient differential equation is
+\[
+	\sum\limits_{k = 0}^{N}a_k\frac{d^ky(t)}{dt^k} = \sum\limits_{k = 0}^{M}b_k\frac{d^kx(t)}{dt^k}
+\]
+When \(N = 0\), we get an explicit relation. In other cases, the relation between input and output is implicit.
+\subsubsection{General solution}
+\[
+	y(t) = \underbrace{y_p(t)}\limits_{\text{Particular solution}} + \underbrace{y_h(t)}\limits_{\text{Homogeneous solution}}
+\]
+
+\subsection{Difference Equation}
+An LTI system, in discrete-time case, can be represented using \textbf{linear} difference equation with \textbf{constant coefficients}. A general \(N^{th}\) order linear constant coefficient difference equation is
+\[
+	\sum\limits_{k = 0}^{N}a_ky[n-k] = \sum\limits_{k = 0}^{M}b_kx[n-k]
+\]
+When \(N = 0\), we get an explicit relation and the system has finite impulse responses(FIR). In other cases, the relation between input and output is implicit/recursive and the system has infinite impulse responses (IIR).
+
 
 \bibliographystyle{unsrt}
 \bibliography{main}
