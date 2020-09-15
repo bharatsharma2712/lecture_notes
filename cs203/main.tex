@@ -1007,7 +1007,9 @@ Delay is the amount of time required for processing(time-different between outpu
 \]
 Transistor size of usually modifies for large fan-in gates.
 \\\\
-\noindent\textbf{Note: } Propagation delay for \(0 \to 1\) and \(1 \to 0\) may be different. We generally take max of both delays and consider it the propagation delay of the gate.
+\noindent\textbf{Note: } Rise-time(propagation delay for \(0 \to 1\)) and fall-time(propagation delay for \(1 \to 0\)) may be different. We generally take max of both delays and consider it the propagation delay of the gate.
+\\\\
+\noindent Propagation delay for a collection of gates is equal to sum of delays of each level (level is the collection of gates working in parallel).
 
 \bibliographystyle{unsrt}
 \bibliography{main}
