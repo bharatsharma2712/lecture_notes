@@ -1011,6 +1011,49 @@ Transistor size of usually modifies for large fan-in gates.
 \\\\
 \noindent Propagation delay for a collection of gates is equal to sum of delays of each level (level is the collection of gates working in parallel).
 
+\chapter{Origin of Boolean Expressions}
+In this chapter, we will see where do boolean expressions come from and try to generate useful boolean expressions. Boolean expressions can be constructed from plain language.
+\\\\
+\noindent\textbf{Example}
+\begin{center}
+	``You should laugh if the joke is funny, good in taste and not offensive or the joke is told by the professor and is not offensive."
+\end{center}
+
+\noindent Here, we can find inputs and outputs
+\begin{itemize}
+	\item Inputs
+	      \begin{enumerate}
+		      \item F: Joke is funny
+		      \item T: Joke is good in taste
+		      \item O: Joke is offensive
+		      \item P: Joke is told by the professor
+	      \end{enumerate}
+	\item Output
+	      \begin{enumerate}
+		      \item L: Laugh
+	      \end{enumerate}
+\end{itemize}
+So, the boolean expression is
+\[
+	L = FTO^\prime + PO^\prime
+\]
+Now that we have generated a boolean expression, we can minimize it and realize it using physical circuit.
+
+\section{Multiplexer}
+A multiplexer(or mux) is a device that selects between several input signals and forwards it to a single output line. \cite{multiplexer_wiki}
+A general \(N:1\) mux is shown in the figure \cref{n_1_mux}.
+\begin{figure}[H]
+	\centering
+	\incfig{n_1_mux}
+	\caption{N:1 MUX}
+	\label{n_1_mux}
+\end{figure}
+\begin{itemize}
+	\item Number of bits in control-input \((C) = \log_2{n}\)
+	\item Output \((Z) = \sum{m_kI_k}\), where \(m_k\) is the \(k^{th}\) minterm of control-input
+\end{itemize}
+
+
 \bibliographystyle{unsrt}
 \bibliography{main}
 \end{document}
