@@ -1053,6 +1053,149 @@ A general \(N:1\) mux is shown in the figure \cref{n_1_mux}.
 	\item Output \((Z) = \sum{m_kI_k}\), where \(m_k\) is the \(k^{th}\) minterm of control-input
 \end{itemize}
 
+\subsection{One-Hot}
+It is a kind of multiplexer where the control input has only one bit high and all others low. \cite{one_hot_wiki}
+
+\section{Four States}
+A digital circuit does not have just 2 states. There are 4 states
+\begin{enumerate}
+	\item \textbf{High} (1)
+	\item \textbf{Low} (0)
+	\item \textbf{Unknown} (X): This state occurs when the voltage of bit cannot be determined (e.g. when you pass two different wires to one input).\\
+	      In reality, it means the state is not certain (IC/gates may be faulty or connections are done wrong).
+	\item \textbf{High Impedence} (Z): This state occurs when the circuit is open (e.g. no wires passed to input).
+\end{enumerate}
+
+\subsection{Four-State Logic}
+\begin{enumerate}
+	\item AND
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|c|cccc|}
+			      \hline
+			      $\cdot$ & 0 & 1 & X & Z \\
+			      \hline
+			      0       & 0 & 0 & 0 & 0 \\
+			      1       & 0 & 1 & X & X \\
+			      X       & 0 & X & X & X \\
+			      Z       & 0 & X & X & X \\
+			      \hline
+		      \end{tabular}
+		      \caption{Four-state AND truth table}
+	      \end{table}
+	\item OR
+	      \begin{table}[ht]
+		      \centering
+		      \begin{tabular}{|c|cccc|}
+			      \hline
+			      $+$ & 0 & 1 & X & Z \\
+			      \hline
+			      0   & 0 & 1 & X & X \\
+			      1   & 1 & 1 & 1 & 1 \\
+			      X   & X & 1 & X & X \\
+			      Z   & X & 1 & X & X \\
+			      \hline
+		      \end{tabular}
+		      \caption{Four-state OR truth table}
+	      \end{table}
+\end{enumerate}
+
+\section{Tri-State Buffer}
+A buffer is an identity gate that is used to strengthen the signal.
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{buffer}
+		\caption{Buffer gate}
+	\end{subfigure}
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			$A$ & $Y$ \\
+			\hline
+			0   & 0   \\
+			1   & 1   \\
+			\hline
+		\end{tabular}
+		\caption{Truth table for buffer}
+	\end{subfigure}
+\end{figure}
+
+\noindent A tri-state buffer is a buffer which can output three states.
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{tri_state_buffer}
+		\caption{Tri-state buffer gate}
+	\end{subfigure}
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\begin{tabular}{|cc|c|}
+			\hline
+			$A$ & $B$ & $Y$ \\
+			\hline
+			0   & 0   & 0   \\
+			1   & 0   & 1   \\
+			0   & 1   & Z   \\
+			1   & 1   & Z   \\
+			\hline
+		\end{tabular}
+		\caption{Truth table for tri-state buffer}
+	\end{subfigure}
+\end{figure}
+
+\noindent A tri-state buffer can also be as shown.
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\incfig{tri_state_buffer_2}
+		\caption{Tri-state buffer gate}
+	\end{subfigure}
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\begin{tabular}{|cc|c|}
+			\hline
+			$A$ & $B$ & $Y$ \\
+			\hline
+			0   & 1   & Z   \\
+			1   & 1   & Z   \\
+			0   & 0   & 0   \\
+			1   & 0   & 1   \\
+			\hline
+		\end{tabular}
+		\caption{Truth table for tri-state buffer}
+	\end{subfigure}
+\end{figure}
+
+\subsection{Multiplexer Implementation}
+A mux can be made using tri-state buffers.
+\begin{figure}[ht]
+	\centering
+	\incfig{mux_with_tri_state_buffer}
+	\caption{Mux using tri-state buffer}
+\end{figure}
+Such mux implementation is not preferred by digital designers because it makes verfication difficult (because Z is appearing many times).
+
+\section{Demultiplexer}
+A demultiplexer (or demux) is a device taking one data input and a number of selection inputs, and they have several outputs. The output where data will be provided depends on the values of selection inputs. \cite{multiplexer_wiki}
+A general \(1:N\) demux is shown in the figure \cref{1_n_demux}.
+\begin{figure}[H]
+	\centering
+	\incfig{1_n_demux}
+	\caption{1:N DEMUX}
+	\label{1_n_demux}
+\end{figure}
+\begin{itemize}
+	\item Number of bits in control-input \((C) = \log_2{n}\)
+	\item Output \((Y_k) = m_kA\), where \(m_k\) is the \(k^{th}\) minterm of control-input
+\end{itemize}
+
+\subsection{Decoder}
+A decoder is similar to demultiplexer, but it does NOT have data input like demultiplexer. It only has control/selection input which decide which output should be set to high.
 
 \bibliographystyle{unsrt}
 \bibliography{main}
